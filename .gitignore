@@ -1,0 +1,15 @@
+# 평문/소스 파일 — 절대 배포 저장소에 올리지 않음 (암호화 무력화 방지)
+index.plain.html
+encrypt.py
+refresh.py
+watch_refresh.sh
+raw_os.json
+.refresh_state
+refresh.log
+*.plist
+DESIGN_GRAPHITE.md
+*.csv
+.DS_Store
+SESSION_*.md
+*.xlsx
+TREND_DEPLOY_HANDOFF.md
