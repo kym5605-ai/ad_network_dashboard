@@ -13,3 +13,25 @@ DESIGN_GRAPHITE.md
 SESSION_*.md
 *.xlsx
 TREND_DEPLOY_HANDOFF.md
+nasmedia_union_board.html
+nasmedia_union_proposal.html
+nasmedia_union_ctr.html
+
+# 세션 컨텍스트 문서 — 비밀번호·내부 수치 포함. public 저장소에 절대 올리지 않음
+CLAUDE.md
+STATUS.md
+status.sh
+dau_update.py
+
+# 배치(노출순서) 기획 산출물 — 평문 매출·eCPM 포함. 절대 커밋 금지
+waterfall_plan.html
+WATERFALL_PLAN.md
+
+# 계산기 기획 산출물 — 평문 매출·계약단가 포함. 절대 커밋 금지
+CALCULATOR_PLAN.md
+calculator_plan.html
+sync.sh
+
+# 목업 매핑 미리보기 (로컬 전용)
+mockup_map/
+
