@@ -11,6 +11,7 @@ DESIGN_GRAPHITE.md
 *.csv
 .DS_Store
 SESSION_*.md
+HANDOFF_*.md
 *.xlsx
 TREND_DEPLOY_HANDOFF.md
 nasmedia_union_board.html
@@ -35,3 +36,16 @@ sync.sh
 # 목업 매핑 미리보기 (로컬 전용)
 mockup_map/
 
+
+# GA4 API 인증정보·가상환경 — 절대 커밋 금지
+.ga4/
+.venv-ga4/
+dau_api.py
+
+# 블라인드 벤치마크 실측 산출물 (로컬 전용)
+bench/
+bench.html
+bench_data.js
+
+# 시나리오 재설계 시안 (로컬 전용 — 평문 매출 포함)
+headroom.html
