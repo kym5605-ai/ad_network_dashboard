@@ -49,3 +49,13 @@ bench_data.js
 
 # 시나리오 재설계 시안 (로컬 전용 — 평문 매출 포함)
 headroom.html
+
+# 발표자료 (로컬 전용 — 평문 매출 포함)
+deck.html
+DECK_PLAN.md
+
+# 하반기 목표·액션아이템 보고서 (로컬 전용 — 평문 매출 포함)
+report_h2_2026.html
+
+# 소재 타입 시안 (로컬 전용 — 광고주 소재 이미지 포함)
+creative_types.html
