@@ -2,6 +2,7 @@
 index.plain.html
 encrypt.py
 refresh.py
+tong2csv.py
 watch_refresh.sh
 raw_os.json
 .refresh_state
@@ -59,3 +60,27 @@ report_h2_2026.html
 
 # 소재 타입 시안 (로컬 전용 — 광고주 소재 이미지 포함)
 creative_types.html
+
+# 노션 문서화 초안 (매출 수치 포함 — 공개 금지)
+plan_doc.html
+
+# 노션 목업 (매출 수치 포함 — 공개 금지)
+notion_mock.html
+
+# 제휴 캠페인 파서·데이터 (평문 매출·집행금액 포함 — 공개 금지)
+aff_parse.py
+aff_data.js
+
+# 분석용 임시 산출물
+_monthly.json
+_wk.json
+_wk2.json
+_to_delete/
+
+# Impact API 연동 (계정 구조·엔드포인트 노출 방지 — 공개 금지)
+impact_api.py
+impact_daily*.json
+impact_daily*.csv
+__pycache__/
+aff_server.py
+aff_sync.sh
