@@ -84,3 +84,18 @@ impact_daily*.csv
 __pycache__/
 aff_server.py
 aff_sync.sh
+
+# 팀원 배포용 꾸러미 (스킬 md 사본 — 공유 폴더로 복사해 씀)
+team_setup/
+
+aff_runner.py
+.aff_runs.jsonl
+.aff_uploads/
+
+# 로컬 실행 런처
+제휴 대시보드 열기.command
+
+.aff_work/
+
+# 세션 중 생성된 로컬 산출물 (내부 지표 포함 — 공개 금지)
+block_weekly*.html
