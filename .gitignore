@@ -122,3 +122,11 @@ ga4_sync.py
 ga4_daily.json
 inject_inventory.py
 .collect_srv.log
+
+# 애플 Impact 원천 캐시 — 평문 매출 포함. 절대 커밋 금지
+apple_impact.py
+apple_impact.json
+weekly_sep_decline.html
+.aff_hist_cache.json
+pv_loc_build.py
+inject_pv.py
