@@ -99,3 +99,26 @@ aff_runner.py
 
 # 세션 중 생성된 로컬 산출물 (내부 지표 포함 — 공개 금지)
 block_weekly*.html
+fr_watch_proto.html
+ecpm_watch_proto.html
+
+# 인벤토리 대시보드 (로컬 전용 — 직광고 원본·매출 포함, 공개 금지)
+INVENTORY_PLAN.md
+inventory_proto.html
+inventory_tpl.html
+build_inventory.py
+direct_position_full.csv
+ga4_daily.json
+skill_layout_proto.html
+skill_screen_proto.html
+skill_brand_proto.html
+
+# 인벤토리 3분할 수집 (로컬 전용)
+collect_srv.py
+.collect/
+campaign_map.json
+split_build.py
+ga4_sync.py
+ga4_daily.json
+inject_inventory.py
+.collect_srv.log
