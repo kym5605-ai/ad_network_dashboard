@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>에브리타임 레버리지 · 캠퍼스픽 수익화 설계</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<style>
+:root{
+  --ink:#0B1220; --ink2:#141F33; --ink3:#22304F;
+  --line:#E4E9F2; --paper:#F7F9FC; --text:#16233C; --sub:#4C5B75; --muted:#8391A8;
+  --red:#E03A16; --redsoft:#FDEDE8;
+  --blue:#2E5FD3; --bluesoft:#EAF0FE;
+  --green:#0E9F6E; --greensoft:#E6F6F0;
+  --amber:#C8860D; --ambersoft:#FDF3E0;
+  --grey:#B7C2D4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--text);font-size:15px;line-height:1.65;
+  font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased}
+svg{display:block;overflow:visible}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* hero */
+.hero{background:var(--ink);color:#fff;padding:56px 0 46px}
+.tag{font-size:12px;letter-spacing:.14em;color:var(--red);font-weight:700}
+.hero h1{font-size:38px;font-weight:800;letter-spacing:-.03em;line-height:1.28;margin-top:14px}
+.hero .mission{margin-top:22px;background:var(--ink2);border-radius:14px;padding:20px 22px;max-width:820px}
+.hero .mission b{color:#fff}
+.hero .mission div{color:#A9BBD6;font-size:15px;line-height:1.8}
+
+/* section */
+section{padding:52px 0 8px}
+.eyebrow{font-size:11px;letter-spacing:.14em;font-weight:700;color:var(--red)}
+h2{font-size:27px;font-weight:800;letter-spacing:-.025em;margin-top:8px}
+.lead{color:var(--sub);margin-top:10px;max-width:800px;font-size:15px}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;margin-top:22px}
+.card h3{font-size:18px;font-weight:700;letter-spacing:-.02em}
+.card .sub{font-size:13px;color:var(--muted);margin-top:5px}
+.src{font-size:11.5px;color:var(--muted);margin-top:18px;line-height:1.7;padding-top:14px;border-top:1px dashed var(--line)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+.grid2 .card{margin-top:0}
+
+.take{margin-top:18px;background:var(--redsoft);border-radius:12px;padding:15px 17px;font-size:14px;color:#7A2A12;line-height:1.75}
+.take b{color:var(--red)}
+.take.blue{background:var(--bluesoft);color:#1C3D8C} .take.blue b{color:var(--blue)}
+.take.green{background:var(--greensoft);color:#075E42} .take.green b{color:var(--green)}
+.warn{background:#FFF9E8;border:1px solid #F0DFAE;border-radius:12px;padding:15px 17px;
+  font-size:13px;color:#7A5B0A;line-height:1.8;margin-top:18px}
+
+table{width:100%;border-collapse:collapse;margin-top:18px;font-size:13px}
+th{text-align:left;font-weight:700;color:var(--sub);font-size:11.5px;letter-spacing:.03em;
+  padding:0 10px 10px;border-bottom:2px solid var(--line);white-space:nowrap}
+td{padding:13px 10px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.6}
+tbody tr:hover{background:var(--paper)}
+.co{font-weight:700;font-size:13.5px;display:block}
+.co small{display:block;font-weight:400;color:var(--muted);font-size:11.5px;margin-top:2px}
+.tag2{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:5px;white-space:nowrap}
+.t-sub{background:var(--bluesoft);color:var(--blue)}
+.t-ad{background:#EEF2F9;color:#3D5378}
+.t-fee{background:var(--redsoft);color:var(--red)}
+.t-edu{background:var(--ambersoft);color:var(--amber)}
+.t-b2b{background:var(--greensoft);color:var(--green)}
+.hi{background:#FFFBF2}
+
+/* BM 카드 */
+.bm{border-radius:16px;padding:26px;margin-top:18px;border:1px solid var(--line);background:#fff}
+.bm .no{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;
+  border-radius:8px;font-size:12px;font-weight:800;color:#fff;background:var(--ink)}
+.bm h3{display:inline-block;margin-left:10px;font-size:20px;font-weight:800;letter-spacing:-.02em;vertical-align:middle}
+.bm .who{font-size:12.5px;color:var(--muted);margin-top:10px}
+.bm .body{margin-top:14px;font-size:14px;line-height:1.8;color:var(--sub)}
+.bm .body b{color:var(--text)}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px}
+.flow span{background:var(--paper);border:1px solid var(--line);border-radius:8px;
+  padding:7px 12px;font-size:12.5px;font-weight:600;color:var(--text)}
+.flow i{color:var(--muted);font-style:normal;font-size:13px}
+.kv{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.kv div{background:var(--paper);border-radius:10px;padding:12px 14px}
+.kv b{display:block;font-size:11.5px;color:var(--muted);font-weight:600}
+.kv span{display:block;font-size:14px;font-weight:700;margin-top:4px}
+
+/* C8 · 경쟁 공백 */
+(function(){
+  const W=940,H=250,s=mk('c8',W,H);
+  const rows=[
+    ['대학 자체 취업관리시스템','재학생 관리 · 졸업생 정보 없음','있음','#8797B0'],
+    ['잡플래닛 제휴대학','학생용 콘텐츠 열람권 판매','있음','#8797B0'],
+    ['한국교육개발원 취업통계','연 1회 · 총계만 · 공공','있음','#8797B0'],
+    ['졸업생 실시간 취업 대시보드','우리 학교 졸업생이 지금 어디에','확인 안 됨','#7B4FD1']
+  ];
+  rows.forEach((r,i)=>{
+    const y=i*56;
+    const last=i===3;
+    s.appendChild(el('rect',{x:0,y:y,width:W,height:46,rx:12,
+      fill:last?'#F3EEFC':'#F7F9FC',stroke:last?'#7B4FD1':'#E4E9F2',
+      'stroke-width':last?2:1,'stroke-dasharray':last?'8 5':''}));
+    s.appendChild(txt(20,y+29,r[0],{ta:'start',fs:14,fw:800,fill:last?'#7B4FD1':'#16233C'}));
+    s.appendChild(txt(400,y+29,r[1],{ta:'start',fs:12.5,fill:'#4C5B75'}));
+    s.appendChild(el('rect',{x:W-124,y:y+11,width:110,height:24,rx:7,fill:last?'#7B4FD1':'#DDE4EE'}));
+    s.appendChild(txt(W-69,y+28,r[2],{fs:12,fw:800,fill:last?'#fff':'#4C5B75'}));
+  });
+  s.appendChild(txt(0,240,'← 이 칸이 비어 있고, 채우려면 「학교 인증을 가진 졸업생」이 필요합니다',
+    {ta:'start',fs:12.5,fw:700,fill:'#7B4FD1'}));
+})();
+
+/* C10 · 수집 타임라인 */
+(function(){
+  const W=940,H=300,s=mk('c10',W,H);
+  const AX=70, AXW=W-AX-30, AXY=132;
+
+  // 축
+  s.appendChild(el('line',{x1:AX,x2:AX+AXW,y1:AXY,y2:AXY,stroke:'#D6DEEA','stroke-width':3,'stroke-linecap':'round'}));
+  const stages=[['3~4학년\n취준 중',0.16],['최종 합격\n그 순간',0.5],['졸업 후\n1~2년차',0.86]];
+  stages.forEach(g=>{
+    const x=AX+AXW*g[1];
+    s.appendChild(el('circle',{cx:x,cy:AXY,r:8,fill:'#fff',stroke:'#8391A8','stroke-width':3}));
+    g[0].split('\n').forEach((ln,k)=>
+      s.appendChild(txt(x,AXY+30+k*17,ln,{fs:12,fw:k===0?700:400,fill:'#4C5B75'})));
+  });
+  s.appendChild(txt(AX-14,AXY+5,'시간',{ta:'end',fs:11,fill:'#8391A8'}));
+
+  const ch=[
+    ['A','지원 트래킹','내 지원 현황 관리','#C8860D',0.16,1],
+    ['B','합격 인증 배지','인정받고 싶다','#E03A16',0.5,1],
+    ['C','재직 인증 · 라운지','내 이직 정보','#2E5FD3',0.86,0]
+  ];
+  ch.forEach(c=>{
+    const x=AX+AXW*c[4], bw=232;
+    const bx=Math.min(Math.max(x-bw/2,0),W-bw);
+    const up=c[5]===1;
+    const by=up?12:186;
+    s.appendChild(el('line',{x1:x,x2:x,y1:up?by+82:AXY,y2:up?AXY:by,stroke:c[3],'stroke-width':2,'stroke-dasharray':'5 4'}));
+    s.appendChild(el('rect',{x:bx,y:by,width:bw,height:82,rx:13,fill:'#fff',stroke:c[3],'stroke-width':2}));
+    s.appendChild(el('circle',{cx:bx+24,cy:by+26,r:13,fill:c[3]}));
+    s.appendChild(txt(bx+24,by+31,c[0],{fs:13,fw:800,fill:'#fff'}));
+    s.appendChild(txt(bx+46,by+31,c[1],{ta:'start',fs:14,fw:800,fill:'#16233C'}));
+    s.appendChild(txt(bx+16,by+62,'명분 · '+c[2],{ta:'start',fs:12,fw:700,fill:c[3]}));
+  });
+
+  s.appendChild(txt(0,286,'같은 사람에게 세 번, 서로 다른 이유로 접근합니다',
+    {ta:'start',fs:12.5,fw:700,fill:'#8391A8'}));
+})();
+
+/* C11 · 링크 파생 가치 */
+(function(){
+  const W=940,H=250,s=mk('c11',W,H);
+  s.appendChild(el('rect',{x:0,y:0,width:280,height:56,rx:12,fill:'#C8860D'}));
+  s.appendChild(txt(140,26,'수집하는 것',{fs:11.5,fw:700,fill:'#FDF3E0'}));
+  s.appendChild(txt(140,46,'공고 원본 링크 1줄',{fs:15,fw:800,fill:'#fff'}));
+  s.appendChild(el('polygon',{points:'292,20 316,28 292,36',fill:'#B7C2D4'}));
+  s.appendChild(el('rect',{x:328,y:0,width:280,height:56,rx:12,fill:'#F7F9FC',stroke:'#E4E9F2','stroke-width':1}));
+  s.appendChild(txt(468,26,'추출',{fs:11.5,fw:700,fill:'#8391A8'}));
+  s.appendChild(txt(468,46,'도메인만 (saramin / catch / 자사)',{fs:13,fw:700,fill:'#16233C'}));
+  s.appendChild(el('polygon',{points:'620,20 644,28 620,36',fill:'#B7C2D4'}));
+  s.appendChild(el('rect',{x:656,y:0,width:284,height:56,rx:12,fill:'#16233C'}));
+  s.appendChild(txt(798,26,'결합',{fs:11.5,fw:700,fill:'#8DA0BD'}));
+  s.appendChild(txt(798,46,'× 최종 합격 여부',{fs:15,fw:800,fill:'#fff'}));
+
+  s.appendChild(txt(0,92,'→ 플랫폼별 지원 대비 합격 전환율',{ta:'start',fs:15,fw:800,fill:'#C8860D'}));
+
+  const outs=[
+    ['후배용 리포트 콘텐츠','권장','#0E9F6E','#E6F6F0'],
+    ['무료 공개 PR · 언론 노출','권장','#0E9F6E','#E6F6F0'],
+    ['채용 플랫폼에 판매','비권장','#E03A16','#FDEDE8']
+  ];
+  const bw=300, gap=(W-3*bw)/2;
+  outs.forEach((o,i)=>{
+    const x=i*(bw+gap);
+    s.appendChild(el('rect',{x:x,y:114,width:bw,height:76,rx:13,fill:o[3],stroke:o[2],'stroke-width':2}));
+    s.appendChild(el('rect',{x:x+bw/2-32,y:130,width:64,height:24,rx:7,fill:o[2]}));
+    s.appendChild(txt(x+bw/2,147,o[1],{fs:12,fw:800,fill:'#fff'}));
+    s.appendChild(txt(x+bw/2,176,o[0],{fs:13.5,fw:700,fill:'#16233C'}));
+  });
+
+  s.appendChild(el('rect',{x:0,y:206,width:W,height:38,rx:10,fill:'#EAF0FE'}));
+  s.appendChild(txt(W/2,230,'채용 플랫폼은 자사 지원까지만 봅니다. 최종 합격 여부를 아는 곳은 우리뿐입니다.',
+    {fs:13.5,fw:700,fill:'#2E5FD3'}));
+})();
+
+/* C12 · 구현 우선순위 */
+(function(){
+  const W=940,H=210,s=mk('c12',W,H);
+  const items=[
+    ['1','합격 인증 배지','개발 비용 최저 · 모든 BM의 시드','#E03A16'],
+    ['2','지원 기록 + 공고 링크','전환율 데이터 · 탈락 데이터','#C8860D'],
+    ['3','선배 리포트 열람','BM 1 매출 발생 시작','#2E5FD3'],
+    ['4','재직 인증 · 라운지','BM 5 대시보드 원재료','#7B4FD1'],
+    ['5','합격 예측 진단','데이터 축적 후에만 정확도 확보','#0E9F6E']
+  ];
+  items.forEach((it,i)=>{
+    const y=i*40;
+    s.appendChild(el('rect',{x:0,y:y,width:W,height:32,rx:9,fill:'#F7F9FC',stroke:'#E4E9F2','stroke-width':1}));
+    s.appendChild(el('rect',{x:0,y:y,width:5,height:32,rx:2,fill:it[3]}));
+    s.appendChild(el('circle',{cx:32,cy:y+16,r:12,fill:it[3]}));
+    s.appendChild(txt(32,y+21,it[0],{fs:12.5,fw:800,fill:'#fff'}));
+    s.appendChild(txt(58,y+21,it[1],{ta:'start',fs:13.5,fw:800,fill:'#16233C'}));
+    s.appendChild(txt(W-16,y+21,it[2],{ta:'end',fs:12,fill:'#4C5B75'}));
+  });
+})();
+
+/* C13 · 영향 매트릭스 */
+(function(){
+  const W=940,H=430,s=mk('c13',W,H);
+  const acts=[
+    ['A','지원 기록','#C8860D','공고 링크 · 전형 단계 · 탈락'],
+    ['B','합격 인증','#E03A16','회사 · 직무 · 입사일'],
+    ['C','합격 자료 등록','#2E5FD3','스펙 · 자소서 · 면접 후기'],
+    ['D','재직 인증','#7B4FD1','연봉 · 이직 · 재직 현황'],
+    ['E','진단 입력','#0E9F6E','현재 스펙 · 목표 기업']
+  ];
+  const bms=[
+    ['1','선배 리포트','#2E5FD3','매출'],
+    ['2','합격 진단','#0E9F6E','매출'],
+    ['5','대학 라이선스','#7B4FD1','매출'],
+    ['3','기업 데이터','#C8860D','매출'],
+    ['4','캐시백','#E03A16','지출']
+  ];
+  // 0=없음 1=보조 2=핵심   [행 A~E][열 1,2,5,3,4]
+  const M=[
+    [1,2,0,0,0],
+    [2,2,2,0,2],
+    [2,1,0,0,1],
+    [1,0,2,2,0],
+    [0,2,0,0,0]
+  ];
+
+  const LX=250, CW=124, TY=104, RH=56;
+  // 열 헤더
+  bms.forEach((b,c)=>{
+    const x=LX+c*CW;
+    const out=b[3]==='지출';
+    s.appendChild(el('rect',{x:x+6,y:34,width:CW-12,height:58,rx:11,
+      fill:out?'#FDEDE8':'#F7F9FC',stroke:b[2],'stroke-width':2,'stroke-dasharray':out?'6 4':''}));
+    s.appendChild(el('circle',{cx:x+CW/2,cy:53,r:11,fill:b[2]}));
+    s.appendChild(txt(x+CW/2,57,b[0],{fs:11.5,fw:800,fill:'#fff'}));
+    s.appendChild(txt(x+CW/2,80,b[1],{fs:12,fw:800,fill:'#16233C'}));
+    s.appendChild(txt(x+CW/2,24,b[3],{fs:10.5,fw:800,fill:out?'#E03A16':'#0E9F6E'}));
+  });
+  // 행 + 셀
+  acts.forEach((a,r)=>{
+    const y=TY+r*RH;
+    if(r%2===0) s.appendChild(el('rect',{x:0,y:y,width:W,height:RH,rx:8,fill:'#FAFBFD'}));
+    s.appendChild(el('circle',{cx:22,cy:y+RH/2,r:12,fill:a[2]}));
+    s.appendChild(txt(22,y+RH/2+4,a[0],{fs:11.5,fw:800,fill:'#fff'}));
+    s.appendChild(txt(42,y+RH/2-3,a[1],{ta:'start',fs:13,fw:800,fill:'#16233C'}));
+    s.appendChild(txt(42,y+RH/2+15,a[3],{ta:'start',fs:11,fill:'#8391A8'}));
+    bms.forEach((b,c)=>{
+      const x=LX+c*CW+CW/2, cy=y+RH/2, v=M[r][c];
+      if(v===2){
+        s.appendChild(el('circle',{cx:x,cy:cy,r:15,fill:b[2]}));
+        s.appendChild(txt(x,cy+4,'●',{fs:11,fill:'#fff'}));
+      }else if(v===1){
+        s.appendChild(el('circle',{cx:x,cy:cy,r:15,fill:'#fff',stroke:b[2],'stroke-width':2}));
+        s.appendChild(txt(x,cy+4,'○',{fs:11,fill:b[2]}));
+      }else{
+        s.appendChild(el('line',{x1:x-6,x2:x+6,y1:cy,y2:cy,stroke:'#DDE4EE','stroke-width':2}));
+      }
+    });
+  });
+  // 세로 구분선
+  bms.forEach((b,c)=>{
+    const x=LX+c*CW;
+    s.appendChild(el('line',{x1:x,x2:x,y1:TY,y2:TY+5*RH,stroke:'#EDF1F7','stroke-width':1}));
+  });
+  s.appendChild(el('line',{x1:LX+5*CW,x2:LX+5*CW,y1:TY,y2:TY+5*RH,stroke:'#EDF1F7','stroke-width':1}));
+
+  // 범례 + 합계
+  const ly=TY+5*RH+22;
+  s.appendChild(el('circle',{cx:12,cy:ly,r:9,fill:'#16233C'}));
+  s.appendChild(txt(28,ly+4,'핵심 원재료',{ta:'start',fs:12,fw:700,fill:'#4C5B75'}));
+  s.appendChild(el('circle',{cx:132,cy:ly,r:9,fill:'#fff',stroke:'#16233C','stroke-width':2}));
+  s.appendChild(txt(148,ly+4,'보조',{ta:'start',fs:12,fw:700,fill:'#4C5B75'}));
+  s.appendChild(el('line',{x1:200,x2:212,y1:ly,y2:ly,stroke:'#DDE4EE','stroke-width':2}));
+  s.appendChild(txt(220,ly+4,'무관',{ta:'start',fs:12,fw:700,fill:'#8391A8'}));
+
+  // 열별 연결 수
+  bms.forEach((b,c)=>{
+    let n=0; for(let r=0;r<5;r++) if(M[r][c]>0) n++;
+    const x=LX+c*CW+CW/2;
+    s.appendChild(el('rect',{x:x-52,y:ly-12,width:104,height:24,rx:7,
+      fill:n<=1?'#FDEDE8':'#F2F5F9'}));
+    s.appendChild(txt(x,ly+4,n+'개 행동 연결',{fs:11,fw:800,fill:n<=1?'#E03A16':'#4C5B75'}));
+  });
+
+  s.appendChild(el('rect',{x:0,y:H-46,width:W,height:38,rx:10,fill:'#FDEDE8'}));
+  s.appendChild(txt(W/2,H-22,'B 합격 인증 한 줄이 4개 BM에 핵심으로 걸립니다 · BM 3은 D 하나에만 의존합니다',
+    {fs:13,fw:700,fill:'#E03A16'}));
+})();
+
+/* C14 · 순환 구조 */
+(function(){
+  const W=940,H=300,s=mk('c14',W,H);
+  const steps=[
+    ['후배','구독료 결제','#2E5FD3','₩'],
+    ['캠퍼스픽','수수료 30% 확보','#16233C','₩'],
+    ['선배','캐시백 · 로열티 수령','#E03A16','₩'],
+    ['데이터','회사 · 직무 · 연봉 인증','#C8860D','DATA'],
+    ['리포트','다음 후배에게 판매','#0E9F6E','DATA']
+  ];
+  const bw=166, gap=(W-5*bw)/4;
+  steps.forEach((t,i)=>{
+    const x=i*(bw+gap);
+    s.appendChild(el('rect',{x:x,y:56,width:bw,height:104,rx:14,fill:'#fff',stroke:t[2],'stroke-width':2}));
+    s.appendChild(el('rect',{x:x,y:56,width:bw,height:26,rx:0,fill:t[2]}));
+    s.appendChild(el('rect',{x:x,y:56,width:bw,height:14,fill:t[2]}));
+    s.appendChild(txt(x+bw/2,75,t[3],{fs:11.5,fw:800,fill:'#fff'}));
+    s.appendChild(txt(x+bw/2,116,t[0],{fs:17,fw:800,fill:'#16233C'}));
+    s.appendChild(txt(x+bw/2,140,t[1],{fs:11.5,fill:'#8391A8'}));
+    if(i<4){
+      const ax=x+bw+gap/2;
+      s.appendChild(el('polygon',{points:(ax-9)+',100 '+(ax+9)+',108 '+(ax-9)+',116',fill:'#B7C2D4'}));
+    }
+  });
+  // 되돌아가는 화살표
+  s.appendChild(el('path',{d:'M'+(W-bw/2)+',168 L'+(W-bw/2)+',206 L'+(bw/2)+',206 L'+(bw/2)+',172',
+    fill:'none',stroke:'#0E9F6E','stroke-width':2.5,'stroke-dasharray':'7 5'}));
+  s.appendChild(el('polygon',{points:(bw/2-8)+',180 '+(bw/2+8)+',180 '+(bw/2)+',164',fill:'#0E9F6E'}));
+  s.appendChild(txt(W/2,224,'리포트가 팔리면 다시 후배의 구독료가 된다 — 고리가 닫힌다',
+    {fs:13,fw:700,fill:'#0E9F6E'}));
+
+  s.appendChild(txt(0,30,'돈의 흐름 ₩ · 데이터의 흐름 DATA',{ta:'start',fs:12,fw:700,fill:'#8391A8'}));
+  s.appendChild(el('rect',{x:0,y:250,width:W,height:38,rx:10,fill:'#FDEDE8'}));
+  s.appendChild(txt(W/2,274,'단 첫 바퀴는 스스로 돌지 않습니다 — 첫 선배를 합격 인증 배지로 만들어야 시작됩니다',
+    {fs:13,fw:700,fill:'#E03A16'}));
+})();
+
+/* C9 · 시나리오 */
+(function(){
+  const W=940,H=330,s=mk('c9',W,H);
+  const sc=[
+    ['보수',20,1200,'#8797B0'],
+    ['기본',50,2000,'#7B4FD1'],
+    ['공격',100,3000,'#E03A16']
+  ];
+  const vals=sc.map(r=>r[1]*r[2]*10000);
+  const max=Math.max.apply(null,vals)*1.25;
+  const T=58,BASE=200;
+  const Y=v=>BASE-(v/max)*(BASE-T);
+  const bw=180, gap=(W-3*bw)/4;
+  sc.forEach((r,i)=>{
+    const x=gap+i*(bw+gap), v=vals[i];
+    s.appendChild(el('rect',{x:x,y:Y(v),width:bw,height:BASE-Y(v),rx:10,fill:r[3]}));
+    s.appendChild(txt(x+bw/2,Y(v)-16,(v/100000000).toFixed(1)+'억원',{fs:23,fw:800,fill:'#16233C'}));
+    s.appendChild(txt(x+bw/2,BASE+26,r[0],{fs:15,fw:800,fill:'#16233C'}));
+    s.appendChild(txt(x+bw/2,BASE+50,r[1]+'개교 × '+r[2].toLocaleString('ko-KR')+'만원',{fs:12.5,fw:700,fill:'#4C5B75'}));
+    s.appendChild(txt(x+bw/2,BASE+70,'침투율 '+(r[1]/397*100).toFixed(1)+'%',{fs:11.5,fill:'#8391A8'}));
+    const ok=r[2]*10000<=20000000;
+    s.appendChild(el('rect',{x:x+bw/2-58,y:BASE+82,width:116,height:22,rx:6,fill:ok?'#E6F6F0':'#FDEDE8'}));
+    s.appendChild(txt(x+bw/2,BASE+97,ok?'수의계약 가능':'공개입찰 필요',
+      {fs:11,fw:800,fill:ok?'#0E9F6E':'#E03A16'}));
+  });
+  s.appendChild(txt(0,26,'연 매출 = 계약 학교 수 × 학교당 연 계약액',{ta:'start',fs:13,fw:700,fill:'#4C5B75'}));
+  s.appendChild(txt(W,26,'모수 397개 캠퍼스',{ta:'end',fs:11.5,fill:'#8391A8'}));
+  s.appendChild(txt(0,318,'※ 학교당 계약액은 공개 사례가 없어 우리가 정하는 값입니다. 학교 수만이 영업으로 통제 가능한 변수입니다.',
+    {ta:'start',fs:11.5,fill:'#8391A8'}));
+})();
+
+/* 계산기 */
+.calc{background:var(--ink);border-radius:16px;padding:28px;margin-top:22px;color:#fff}
+.calc h3{font-size:19px;font-weight:800;color:#fff}
+.calc .sub{color:#8DA0BD;font-size:13px;margin-top:6px}
+.inputs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:22px}
+.inp label{display:block;font-size:12.5px;color:#A9BBD6;margin-bottom:8px}
+.inp label b{color:#fff;font-weight:700}
+.inp input[type=range]{width:100%;accent-color:var(--red)}
+.formula{margin-top:24px;background:var(--ink2);border-radius:12px;padding:18px;
+  font-size:13.5px;line-height:2;color:#C8D4E8;font-variant-numeric:tabular-nums}
+.formula b{color:#fff}
+.formula .eq{color:var(--red);font-weight:800}
+.result{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.result div{background:var(--ink3);border-radius:12px;padding:16px 18px}
+.result b{display:block;font-size:12px;color:#9FB2D0}
+.result span{display:block;font-size:26px;font-weight:800;margin-top:6px}
+
+footer{background:var(--ink);color:#7F91AE;font-size:12px;padding:32px 0;margin-top:56px;line-height:1.85}
+
+@media(max-width:880px){
+  .grid2,.inputs,.result{grid-template-columns:1fr}
+  .kv{grid-template-columns:1fr}
+  .hero h1{font-size:27px}
+  .tblwrap{overflow-x:auto} table{min-width:760px}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="tag">VINU TEAM 워크숍 · 2026.08</div>
+    <h1>에브리타임을 레버리지해<br />캠퍼스픽에서 수익을 만든다</h1>
+    <div class="mission">
+      <div>
+        <b>미션</b> — 채용시장의 핵심 타깃이 이미 모여 있는 에브리타임의 트래픽을,
+        그 안에 임베디드된 캠퍼스픽으로 흘려보내 <b>거래가 일어나는 서비스</b>로 만든다.<br />
+        <b>수단</b> — 에브리타임을 쓰다가 <b>취업에 성공한 선배</b>의 데이터를 모으고 가공한다.
+        선배에게는 돈과 명예를 주고, 후배에게는 그 정보를 판다.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- 1. 구조 -->
+<section>
+  <div class="eyebrow">01 · STRUCTURE</div>
+  <h2>이 사업의 구조는 세 줄로 끝난다</h2>
+  <p class="lead">복잡한 설명이 필요하면 설계가 잘못된 것입니다. 이 사업은 다음 세 문장을 넘지 않습니다.</p>
+  <div class="card">
+    <div id="c1"></div>
+    <div class="take blue">
+      <b>1. 에브리타임에는 취업에 성공한 선배가 이미 남아 있습니다.</b> 새로 모을 필요가 없습니다.<br />
+      <b>2. 그 선배의 합격 데이터를 모아 가공합니다.</b> 선배에게는 돈과 배지를 줍니다.<br />
+      <b>3. 후배는 그 정보를 보려고 캠퍼스픽에서 돈을 씁니다.</b> 여기서 매출이 발생합니다.
+    </div>
+    <div class="src">에브리타임은 전국 397개 캠퍼스를 지원하며 누적 가입자 732만 명, 월 평균 이용자 251만 명입니다(비누랩스 「2024 연말결산」). 사내 최신 집계는 누적 841만 명·WAU 174만 명(2026.06)이며, 외부 공표 수치가 아니므로 발표 시 「사내 집계」로 출처를 밝혀야 합니다.</div>
+  </div>
+</section>
+
+<!-- 2. 왜 지금 -->
+<section>
+  <div class="eyebrow">02 · WHY NOW</div>
+  <h2>왜 지금 이 정보에 돈을 내는가</h2>
+  <p class="lead">전제는 딱 세 개입니다. 모두 공식 통계와 공개 조사에서 확인된 수치입니다.</p>
+
+  <div class="card">
+    <h3>전제 1 · 취업이 오래 걸린다</h3>
+    <div class="sub">졸업 후 첫 취업 평균 소요기간 · 5월 기준 (단위: 개월)</div>
+    <div id="c2"></div>
+    <div class="take"><b>2020년 10.0개월을 저점으로 계속 늘어 2026년 11.2개월.</b> 졸업 후 미취업 청년 가운데 1년 이상 미취업이 48.6%로 2009년 이후 최고입니다.</div>
+    <div class="src">국가데이터처 「경제활동인구조사 청년층 부가조사」 각 연도 5월 보도자료.</div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>전제 2 · 기준이 경험으로 바뀌었다</h3>
+      <div class="sub">신규채용 시 가장 중요한 평가요소 「직무 관련 업무 경험」 응답률 (%)</div>
+      <div id="c3"></div>
+      <div class="take green"><b>2023년 58.4% → 2025년 81.6%.</b> 학벌·학점이 아니라 &lsquo;무엇을 해봤는가&rsquo;가 기준이 됐습니다. <b>그 경험을 어떻게 써야 통과하는지</b>는 합격한 선배만 압니다.</div>
+      <div class="src">한국경영자총협회 「신규채용 실태조사」 각 연도(100인 이상 기업 500개사).</div>
+    </div>
+
+    <div class="card">
+      <h3>전제 3 · 이미 돈을 쓰고 있다</h3>
+      <div class="sub">취업 사교육 분야별 이용률 · 동일 문항 · 복수응답 (2026)</div>
+      <div id="c4"></div>
+      <div class="take"><b>이 차트가 증명하는 것은 딱 하나입니다 — 학생이 취업 준비에 돈을 낸다는 사실.</b> 같은 조사에서 79.4%가 &lsquo;사교육을 안 받으면 불리하다&rsquo;고 답했고, 74.2%는 &lsquo;사교육에 시간을 쓰느라 정작 직무역량을 못 쌓는다&rsquo;고 답했습니다. 후자가 우리 BM 2번(합격 예측 진단)의 존재 이유입니다.</div>
+
+      <div class="warn">
+        <b>40.0%를 우리 시장 규모로 쓰면 안 됩니다.</b><br />
+        이 조사의 「취업컨설팅」은 <b>자기소개서 첨삭·면접 코칭·포트폴리오 제작</b>처럼 사람이 붙어서 봐주는 서비스입니다.
+        확인된 가격대는 학원 기준 자소서 3~4회 20~25만원, 면접 3~4회 30~35만원 수준입니다.<br />
+        <b>우리 상품은 코칭이 아니라 이미 쌓인 정보를 여는 구독</b>이라 이 항목에 정확히 들어가지 않습니다.
+        굳이 가까운 것을 찾자면 잡플래닛 리뷰 열람이나 자소설닷컴 합격자소서 열람인데, <b>&lsquo;정보 열람 구독&rsquo;은 이 조사에 항목 자체가 없습니다.</b><br />
+        따라서 40.0%는 <b style="color:#7A5B0A">인접 시장의 지불 의사를 보여주는 방증</b>이며, 우리 상품의 직접 수요를 증명하지 않습니다.
+        발표에서 이 숫자를 근거로 매출을 역산하면 반박당합니다.
+      </div>
+      <div class="src">교육의봄·청년재단 「2026 취업사교육비 실태조사」(만 19~39세 557명, 청년재단·전국 청년센터를 통해 모집한 자발적 응답 표본). 다섯 항목은 동일 문항의 복수응답 이용률이며, 지출 금액 비중이 아닙니다. 전국 대표성이 확보된 조사가 아닙니다.</div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <b>발표 시 주의</b> — 위 세 지표는 &ldquo;취업이 어렵고, 경험이 중요해졌고, 학생이 이미 돈을 쓴다&rdquo;까지만 증명합니다.
+    <b>&ldquo;그래서 우리 서비스가 팔린다&rdquo;는 증명하지 않습니다.</b> 그 부분은 파일럿으로 확인할 가설이라고 명확히 구분해서 말해야 질문에 무너지지 않습니다.
+  </div>
+</section>
+
+<!-- 3. BM -->
+<section>
+  <div class="eyebrow">03 · BUSINESS MODEL</div>
+  <h2>수익 모델 5가지</h2>
+  <p class="lead">모두 같은 원재료(선배의 합격 데이터)에서 나오지만, <b>돈을 내는 사람이 각각 다릅니다.</b> 그래서 서로 잠식하지 않습니다.</p>
+
+  <div class="bm" style="border-color:var(--blue);border-width:2px">
+    <span class="no" style="background:var(--blue)">1</span><h3>선배 리포트 구독</h3>
+    <div class="who">돈 내는 사람 = <b style="color:var(--blue)">후배 취준생</b> · 잡플래닛 열람권 모델을 대학 단위로</div>
+    <div class="body">
+      우리 학교 선배들의 <b>합격 스펙·전형 후기·면접 후기·연봉</b>을 기업별로 묶어 리포트로 만들고, 열람을 구독으로 판다.
+      면접 항목은 질문 목록이 아니라 <b>본인이 겪은 경험을 서술하는 후기 형식</b>으로 받는다 — 분위기, 압박 강도, 어떤 역량을 집중해서 봤는지.
+      잡플래닛이 &lsquo;면접 후기&rsquo;로 운영하는 방식과 같고, <b>후배에게도 질문 목록보다 이쪽이 실제로 더 쓸모 있다.</b>
+      개별 코칭을 파는 게 아니라 <b>이미 쌓인 데이터를 파는 것</b>이라 선배의 추가 노동이 필요 없다.
+      기업명·직무는 무료로 열고 상세 내용에 페이월을 건다.
+    </div>
+    <div class="flow"><span>선배가 합격 정보 등록</span><i>→</i><span>학교·기업·직무별 리포트 자동 생성</span><i>→</i><span>후배가 구독해 열람</span><i>→</i><span>열람량 기준 선배 정산</span></div>
+    <div class="kv">
+      <div><b>과금</b><span>월 구독 · 학기 패스</span></div>
+      <div><b>강점</b><span>반복 매출 · 선배 노동 0</span></div>
+      <div><b>최대 리스크</b><span>학교별 데이터 부족</span></div>
+    </div>
+    <div class="take blue"><b>잡플래닛과 결정적으로 다른 점</b>은 &lsquo;남의 회사 리뷰&rsquo;가 아니라 <b>&lsquo;우리 학교 선배&rsquo;</b>라는 것입니다. 에브리타임의 학교 인증이 이 차별점을 공짜로 만들어 줍니다.</div>
+  </div>
+
+  <div class="bm">
+    <span class="no" style="background:var(--green)">2</span><h3>합격 예측 진단</h3>
+    <div class="who">돈 내는 사람 = <b style="color:var(--green)">후배 취준생</b> · 재학 중 상시 이용 · 신규 제안</div>
+    <div class="body">
+      선배들의 합격 스펙 데이터에 내 상태를 넣으면 <b>&ldquo;○○대 경영 → 카카오 마케팅 합격자 대비 내 준비도 68%&rdquo;</b>가 나온다.
+      부족한 항목은 캠퍼스픽의 <b>공모전·대외활동·인턴 공고로 바로 연결</b>한다.
+      취준생이 아니라 <b>1~3학년도 쓴다</b>는 점이 핵심이다. 캠퍼스픽 체류 시간을 늘리는 장치이기도 하다.
+    </div>
+    <div class="flow"><span>내 스펙 입력</span><i>→</i><span>합격자 분포와 비교</span><i>→</i><span>부족 항목 도출</span><i>→</i><span>캠퍼스픽 활동 추천</span></div>
+    <div class="kv">
+      <div><b>과금</b><span>진단 단건 · 구독 포함</span></div>
+      <div><b>강점</b><span>이용 시점이 2년 빨라짐</span></div>
+      <div><b>최대 리스크</b><span>표본 부족 시 신뢰도 하락</span></div>
+    </div>
+    <div class="take green">1번이 <b>&ldquo;합격하는 법&rdquo;</b>을 판다면, 2번은 <b>&ldquo;내가 지금 어디쯤인지&rdquo;</b>를 팝니다. 후자는 취업 직전이 아니라 <b>대학 4년 내내</b> 팔립니다.</div>
+  </div>
+
+  <div class="bm">
+    <span class="no" style="background:var(--amber)">3</span><h3>기업 대상 데이터 · 채용 브랜딩</h3>
+    <div class="who">돈 내는 사람 = <b style="color:var(--amber)">기업</b> · 다섯 중 근거가 가장 약한 축 · 12개월 이후 검토</div>
+    <div class="body">
+      <b>신입 시장은 지원자가 넘칩니다.</b> 따라서 &ldquo;누가 우리 회사에 관심 있나&rdquo;는 대부분의 기업에 팔리지 않습니다.
+      이 축이 성립하려면 대상을 좁혀야 합니다.<br /><br />
+      <b>① 인력난 기업 대상 타겟 채용 브랜딩</b> — 경총 조사에서 신규채용이 시급한 직군은 제조·현장·기능직 44.8%, 연구개발 34.2%입니다.
+      고용노동부 조사에서는 기업의 미충원 사유 1위가 &lsquo;요구하는 경력을 갖춘 지원자가 없어서&rsquo; 26%였습니다.
+      <b>중견·중소·지방 제조업은 지금도 사람을 못 구합니다.</b> 이들에게는 관심도 데이터가 아니라 <b>관심을 만들어 주는 노출</b>을 팝니다.
+      데이터는 상품이 아니라 타겟팅 근거입니다.<br /><br />
+      <b>② 재직 데이터 기반 채용 채널 리포트</b> — &ldquo;우리 회사에 입사한 사람들이 어느 학교·학과 출신이고, 몇 년 뒤 몇 %가 남아 있는가.&rdquo;
+      채용 채널 효율을 판단하는 데이터이며, 관심도보다 명백히 상위 정보입니다. 규모 있는 기업에만 해당합니다.
+    </div>
+    <div class="flow"><span>재직 인증 데이터 축적</span><i>→</i><span>학교·학과별 타겟 노출</span><i>→</i><span>채용 채널 리포트</span></div>
+    <div class="kv">
+      <div><b>과금</b><span>노출 광고 · 리포트 구독</span></div>
+      <div><b>강점</b><span>객단가 높음</span></div>
+      <div><b>최대 리스크</b><span>선례가 없는 가설</span></div>
+    </div>
+    <div class="take" style="background:var(--ambersoft);color:#6E4A05"><b style="color:var(--amber)">솔직하게 평가하면 다섯 중 가장 약합니다.</b> 1·2·5번은 잡플래닛, 4번은 원티드라는 실물 선례가 있지만 3번은 &lsquo;데이터가 쌓이면 팔 수 있을 것&rsquo;이라는 가설뿐입니다. <b>발표에서 앞세우면 가장 먼저 무너집니다.</b> 12개월 이후 검토 트랙으로 두고, 지금은 1·2·5번의 부산물 정도로 언급하는 것이 안전합니다.</div>
+  </div>
+
+  <div class="bm">
+    <span class="no" style="background:var(--red)">4</span><h3>데이터 구매 대금 · 합격 축하금</h3>
+    <div class="who">돈 내는 사람 = <b style="color:var(--red)">우리</b> (지출 항목) · 기업 영업 불필요</div>
+    <div class="body">
+      <b>이것은 축하금이 아니라 데이터 구매 대금입니다.</b> 우리는 선배의 회사·직무·연봉 정보를 사는 것이고,
+      대금을 &lsquo;합격 축하금&rsquo;이라는 이름으로 지급할 뿐입니다. 이렇게 정의하면 금액 근거를 설명할 수 있고,
+      회계상으로도 판촉비가 아니라 <b>원가</b>로 잡힙니다.<br /><br />
+      <b>지급 방식은 구독료 캐시백입니다.</b> 그동안 낸 누적 구독료를, 합격하고 데이터를 인증하면 돌려줍니다.
+      전액이 아니라 <b>인증한 항목 수에 따라 차등</b>을 둡니다 —
+      회사명·직무 30%, 전형 후기까지 60%, 연봉 구간까지 100%(상한 적용).
+    </div>
+    <div class="flow"><span>구독 결제 누적</span><i>→</i><span>합격</span><i>→</i><span>데이터 인증</span><i>→</i><span>인증 항목별 캐시백</span><i>→</i><span>이후 열람 로열티</span></div>
+    <div class="kv">
+      <div><b>재원</b><span>구독 매출 + 라이선스 매출</span></div>
+      <div><b>강점</b><span>구조적으로 적자 불가</span></div>
+      <div><b>최대 리스크</b><span>합격 인증 위조</span></div>
+    </div>
+    <div class="take"><b>비용이 매출에 연동되므로 적자가 날 수 없습니다.</b> 환급이 큰 사람은 이미 그만큼 낸 사람이고, 상한만 걸면 리스크가 0에 수렴합니다. 부수 효과도 큽니다 — 구독을 유지할 유인이 생기고(&ldquo;환급받으려면 계속 구독&rdquo;), 무료 이용자에게는 유료 전환 명분이 됩니다(&ldquo;어차피 돌려받는다&rdquo;).</div>
+
+    <div class="warn">
+      <b>원티드와 형태만 같고 재원이 다릅니다.</b><br />
+      원티드는 기업 채용 수수료가 재원이라 <b>기업 영업이 선행</b>돼야 합니다. 신입 시장에서 기업이 축하금을 낼 명분은 약하고 금액도 소액일 수밖에 없습니다.<br />
+      우리는 <b>구독 매출 안에서 완결</b>되므로 기업 영업이 필요 없습니다. 원래 이 축의 최대 약점이던 &lsquo;기업 영업 난이도&rsquo;가 사라집니다.
+    </div>
+
+    <div class="warn">
+      <b>보상은 3단으로 이어집니다. 선배 입장에서 끊기지 않습니다.</b><br />
+      · <b>1단 · 캐시백</b> — 합격 순간, 낸 돈을 돌려받는다. 재원은 구독 매출.<br />
+      · <b>2단 · 열람 로열티</b> — 이후 내 자료가 열릴 때마다 정산된다. 비용이 이연되고, 졸업생이 앱에 남을 이유가 된다.<br />
+      · <b>3단 · 라이선스 배분</b> — 학교 라이선스 매출의 일부를 그 학교 졸업생에게 추가 지급. <b>단, 우리 명의로 지급합니다.</b><br /><br />
+      <b style="color:#7A5B0A">3단을 계약서에 넣으면 안 됩니다.</b> &lsquo;졸업생 데이터 인센티브&rsquo;를 라이선스 계약 항목으로 명시하는 순간
+      학교가 <b>&ldquo;우리 돈으로 모은 데이터&rdquo;</b>라고 주장할 근거가 생깁니다. 학교 조사 대행안을 폐기했던 것과 같은 문제가 형태만 바꿔 돌아옵니다.
+      학교에는 <b>완성된 대시보드만 팔고</b>, 그 매출을 어떻게 쓰는지는 우리 재량으로 둡니다.<br /><br />
+      <b>학교 이름은 돈이 아니라 명예에만 씁니다.</b> 총동문회는 학교 행정과 별개 조직이라 데이터 소유권을 주장할 위치가 아닙니다.
+      <b>&lsquo;동문 기여 인증&rsquo;이라는 비금전적 명예만 총동문회 명의로</b> 받고, 돈은 우리가 줍니다. 명분은 챙기고 소유권 리스크는 피하는 구조입니다.
+    </div>
+  </div>
+
+  <div class="bm" style="border-color:#7B4FD1;border-width:2px">
+    <span class="no" style="background:#7B4FD1">5</span><h3>대학 라이선스</h3>
+    <div class="who">돈 내는 사람 = <b style="color:#7B4FD1">대학</b> · 이미 시장이 존재하는 유일한 축</div>
+    <div class="body">
+      학교가 <b>재학생 수 기준 연 정액</b>으로 사서, 재학생 전원에게 1·2번을 무료 개방한다.
+      여기에 대학만 보는 <b>관리자 대시보드</b>를 붙인다 — 우리 학교 졸업생이 지금 어느 기업·직무에 있는지,
+      어느 학과 학생이 어느 기업을 많이 찾는지.
+      <b>대학은 이 데이터를 교육부 취업통계로 1년에 한 번, 총계로만 받는다.</b> 실시간으로 보는 방법이 지금은 없다.
+    </div>
+    <div class="flow"><span>대학일자리플러스센터 예산</span><i>→</i><span>연 정액 라이선스 계약</span><i>→</i><span>재학생 전원 무료 개방</span><i>→</i><span>관리자 대시보드 제공</span></div>
+    <div class="kv">
+      <div><b>과금</b><span>재학생 수 × 연 정액</span></div>
+      <div><b>강점</b><span>선례 존재 · 예산 통로 확인됨</span></div>
+      <div><b>최대 리스크</b><span>학교별 개별 영업 부담</span></div>
+    </div>
+    <div class="take" style="background:#F3EEFC;color:#4A2C8A"><b style="color:#7B4FD1">이 축만 유일하게 &lsquo;이미 팔리고 있음&rsquo;이 증명돼 있습니다.</b> 잡플래닛이 같은 구조로 다수 대학과 계약 중이며, 상지대 사례처럼 계약명·계약기관·계약기간이 공고로 공개된 건도 있습니다. 우리는 잡플래닛이 못 주는 <b>&lsquo;그 학교 졸업생 데이터&rsquo;</b>를 얹습니다.</div>
+  </div>
+
+  <div class="card" style="background:#FAF7FF;border-color:#DCCFF5">
+    <h3 style="color:#7B4FD1">대학 B2B, 어디까지 현실적인가</h3>
+    <div class="sub">두 가지를 반드시 구분해야 합니다</div>
+    <div id="c7"></div>
+
+    <div style="margin-top:22px;font-size:13.5px;line-height:1.85;color:var(--sub)">
+      <div style="padding:12px 0;border-bottom:1px solid #E7DEF7">
+        <b style="color:var(--text)">✅ 가능 — 정액 라이선스 판매</b><br />
+        잡플래닛 「제휴대학 서비스」가 조선대·한국항공대·충북대·광운대·전북대 등과 운영 중입니다.
+        상지대는 계약명 「잡플래닛 제휴대학 서비스」, 계약기관 ㈜브레인커머스, 계약기간 2022.6.15~11.14(6개월)로 공고했고
+        재원은 원주시 대학발전육성사업이었습니다. <b style="color:var(--text)">대학이 취업정보 서비스를 예산으로 사는 관행이 이미 있습니다.</b>
+      </div>
+      <div style="padding:12px 0;border-bottom:1px solid #E7DEF7">
+        <b style="color:var(--text)">✅ 예산 통로도 확인됨</b><br />
+        대학일자리플러스센터(고용노동부)는 거점형 연 사업비 4.2억 규모이고, 정부·대학·지자체 매칭입니다.
+        사업 안내에 <b style="color:var(--text)">「대학은 민간 고용서비스기관과 컨소시엄 운영 또는 단독 운영」</b>이 명시돼 있어,
+        민간 사업자가 들어갈 공식 통로가 열려 있습니다. 지자체 대학발전육성사업·RISE도 같은 재원이 됩니다.
+      </div>
+      <div style="padding:12px 0;border-bottom:1px solid #E7DEF7">
+        <b style="color:var(--text)">✅ 대학의 지불 동기도 분명함</b><br />
+        취업률은 정부재정지원제한대학 평가의 핵심 지표입니다.
+        여기 걸리면 학교는 정부 재정지원이 막히고, 학생은 국가장학금 II유형·학자금대출까지 제한됩니다.
+        <b style="color:var(--text)">대학에게 취업률은 명분이 아니라 돈 문제입니다.</b>
+      </div>
+      <div style="padding:12px 0">
+        <b style="color:var(--red)">❌ 불가능 — 취업률 성과 연동 보수</b><br />
+        ① <b style="color:var(--text)">귀속 불가</b> — 교육부 취업통계는 건강보험 DB 연계로 12월 31일 기준 산정됩니다. 취업률이 올라도 우리 서비스 덕분인지 증명할 방법이 없습니다.<br />
+        ② <b style="color:var(--text)">시차 약 22개월</b> — 2월 졸업자의 취업률은 그해 12월 31일 기준으로 집계돼 이듬해 12월에 발표됩니다.<br />
+        ③ <b style="color:var(--text)">대학 회계가 못 받음</b> — 예산은 사업연도 단위로 편성되고 계약 시점에 금액이 확정돼야 합니다. 금액 미정인 성과보수는 품의가 나가지 않습니다.<br />
+        <b style="color:var(--red)">→ 그래서 잡플래닛도 성과가 아니라 접근권을 팝니다. 우리도 정액으로 가야 합니다.</b>
+      </div>
+    </div>
+
+    <div class="take blue">
+      <b>성과 지표는 취업률 대신 우리가 통제할 수 있는 것으로 잡습니다.</b>
+      재학생 가입률, 월 활성 이용률, 진단 완료 건수, 학교별 선배 등록 수 — 이 네 가지가 재계약 근거가 됩니다.
+      취업률은 계약 조건이 아니라 <b>홍보 문구</b>로만 씁니다.
+    </div>
+
+    <div class="warn">
+      <b>장학금은 재원을 누가 대느냐로 갈립니다.</b><br />
+      · <b>학교 재원</b> — 학교가 학생에게 주는 것이므로 우리 매출이 아닙니다. 우리는 &lsquo;줄 명분과 데이터&rsquo;를 제공하는 위치입니다.<br />
+      · <b>우리 재원</b> — BM 4번(합격 축하금)이 여기 해당하며, 재원은 기업 채용 수수료입니다.<br />
+      · <b>동문회·발전기금 연계</b> — 선배 멘토 활동을 동문 기여로 인정받게 하고, 대학이 그 대가로 후배에게 장학금을 주는 구조. <b>명분이 가장 좋고, 선배에게 주는 &lsquo;사회적 보상&rsquo; 축과도 맞물립니다.</b>
+    </div>
+    <div class="src">자료: 상지대학교 공고 「기업분석 정보를 알려주는 잡플래닛 서비스 이용 안내」 / 조선대·한국항공대·광운대·충북대·전북대 대학일자리플러스센터 공지 / 고용노동부·한국고용정보원 「대학일자리플러스센터」 사업 안내 / 교육부 고등교육기관 졸업자 취업통계 산정 기준. 각 대학의 실제 계약 금액은 공개돼 있지 않습니다.</div>
+  </div>
+
+  <div class="card">
+    <h3>다섯 개가 어떻게 맞물리는가</h3>
+    <div class="sub">같은 원재료, 다섯 개의 다른 지불자</div>
+    <div id="c5"></div>
+    <div class="take blue">순서가 중요합니다. <b>1번이 데이터를 만들고 → 2번이 이용 시점을 앞당기고 → 5번이 학교 예산으로 그 둘을 대량 보급하고 → 3·4번이 쌓인 데이터를 기업에 판다.</b> 특히 <b>5번은 1·2번의 유통 채널</b>이기도 합니다. 학교가 사서 전교생에게 열어주면 개별 구독 영업이 필요 없어집니다.</div>
+  </div>
+</section>
+
+<!-- 4. 벤치마크 --<!-- 4. 원재료 확보 -->
+<section>
+  <div class="eyebrow">04 · SUPPLY</div>
+  <h2>원재료를 어떻게 모으는가</h2>
+  <p class="lead">모든 BM이 같은 원재료 하나에 의존합니다 — <b>취업에 성공한 선배의 인증된 회사·직무 정보.</b> 이걸 못 모으면 나머지는 전부 무의미합니다.</p>
+
+  <div class="card">
+    <h3>문제를 정확히 정의하면 난이도가 내려간다</h3>
+    <div class="sub">두 가지 오해를 먼저 걷어냅니다</div>
+    <div style="margin-top:16px;font-size:14px;line-height:1.85;color:var(--sub)">
+      <div style="padding:12px 0;border-bottom:1px solid var(--line)">
+        <b style="color:var(--text)">오해 1 · &ldquo;졸업생을 설득해야 한다&rdquo;</b><br />
+        아닙니다. <b style="color:var(--text)">타이밍 문제입니다.</b> 취업에 성공한 순간 그 사람은 앱을 떠납니다.
+        떠난 뒤에 쫓아가서 회사를 물으면 답할 이유가 없습니다.
+        <b style="color:var(--red)">떠나기 전에 받거나, 돌아올 이유를 만들어야</b> 합니다.
+      </div>
+      <div style="padding:12px 0">
+        <b style="color:var(--text)">오해 2 · &ldquo;졸업생 전원의 데이터가 필요하다&rdquo;</b><br />
+        아닙니다. 필요한 것은 <b style="color:var(--text)">「학교 × 기업 × 직무」 칸마다의 최소 표본</b>입니다.
+        연세대 경영 → 카카오 마케팅 칸에 5명만 있어도 리포트가 되고, 그 5명은 매년 새로 생깁니다.
+        목표를 &lsquo;졸업생 전체&rsquo;로 잡으면 실패하고, <b style="color:var(--red)">&lsquo;칸 채우기&rsquo;로 잡으면 가능합니다.</b>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>세 개의 수집 경로 · 시점이 서로 다르다</h3>
+    <div class="sub">한 사람의 커리어 타임라인 위에 세 개의 채널을 겹쳐 놓습니다</div>
+    <div id="c10"></div>
+    <div class="take blue">세 경로는 <b>겹치지 않습니다.</b> A는 취준 기간 내내, B는 합격한 그 순간, C는 졸업하고 1~2년 뒤에 작동합니다. 같은 사람에게 세 번 다른 이유로 접근하는 구조입니다.</div>
+  </div>
+
+  <div class="bm" style="border-color:var(--amber);border-width:2px">
+    <span class="no" style="background:var(--amber)">A</span><h3>지원 트래킹 · 취준 중</h3>
+    <div class="who">명분 = <b style="color:var(--amber)">내 지원 현황을 관리하려고</b> · 요청이 아예 없음</div>
+    <div class="body">
+      후배가 캠퍼스픽에서 <b>지원한 기업·전형 단계·결과를 기록</b>하게 한다. 취준 내내 쓰는 개인 관리 도구이고, 처음엔 아무것도 팔지 않는다.
+      핵심은 <b>최종 합격을 찍는 순간이 자연스럽게 온다</b>는 것 — 따로 &ldquo;회사를 알려달라&rdquo;고 물을 필요가 없다.
+      증빙은 그 시점에 배지 발급 조건으로 붙인다.
+    </div>
+    <div class="flow"><span>지원 기록</span><i>→</i><span>전형 단계 갱신</span><i>→</i><span>합격 체크</span><i>→</i><span>증빙 업로드 · 배지</span></div>
+    <div class="kv">
+      <div><b>얻는 것</b><span>합격 + 탈락 데이터</span></div>
+      <div><b>강점</b><span>요청 없이 자연 수집</span></div>
+      <div><b>약점</b><span>꾸준한 기록 유도가 어려움</span></div>
+    </div>
+    <div class="take" style="background:var(--ambersoft);color:#6E4A05"><b style="color:var(--amber)">유일하게 탈락 데이터를 얻는 경로입니다.</b> 어느 학교 학생이 어느 기업 몇 차에서 떨어지는지 — 이것이 BM 2번(합격 예측 진단)의 진짜 원재료입니다. 합격자만 모으면 진단 정확도가 나오지 않습니다. 유지를 위해 공고 알림·마감 리마인더 같은 실용 기능을 함께 붙여야 합니다.</div>
+  </div>
+
+  <div class="bm" style="border-color:var(--red);border-width:2px">
+    <span class="no" style="background:var(--red)">B</span><h3>합격 인증 배지 · 합격 순간</h3>
+    <div class="who">명분 = <b style="color:var(--red)">돕는 게 아니라 인정받는 것</b> · 이미 벌어지는 행동에 얹기</div>
+    <div class="body">
+      에타에는 지금도 &ldquo;최종 합격했습니다&rdquo; 글이 올라온다. <b>자랑하고 싶은 마음이 최고조인 유일한 시점</b>인데,
+      지금은 그 에너지가 텍스트 글 하나로 증발한다.
+      여기에 <b>합격 인증 배지</b>를 붙인다. 배지를 받으려면 합격 메일이나 재직 증빙을 올려야 하고,
+      대신 축하 스레드가 열리고 학과 게시판에 노출된다. 회사명·직무는 그 과정에서 구조화된다.
+    </div>
+    <div class="flow"><span>합격 글 작성</span><i>→</i><span>배지 신청</span><i>→</i><span>증빙 인증</span><i>→</i><span>축하 노출 · 데이터 확보</span></div>
+    <div class="kv">
+      <div><b>얻는 것</b><span>인증된 합격 정보</span></div>
+      <div><b>강점</b><span>새 행동을 만들 필요 없음</span></div>
+      <div><b>약점</b><span>조용히 취업하는 다수를 놓침</span></div>
+    </div>
+    <div class="take"><b>셋 중 가장 먼저 해야 합니다.</b> 개발 비용이 가장 낮고, 콜드스타트를 즉시 풀어주는 유일한 경로입니다. A와 C는 여기서 만든 시드가 있어야 작동합니다.</div>
+  </div>
+
+  <div class="bm" style="border-color:var(--blue);border-width:2px">
+    <span class="no" style="background:var(--blue)">C</span><h3>보려면 인증한다 · 졸업 후</h3>
+    <div class="who">명분 = <b style="color:var(--blue)">후배가 아니라 자기 자신을 위해</b> · 상호주의</div>
+    <div class="body">
+      1~2년차가 진짜 원하는 것은 후배를 돕는 일이 아니라 <b>자기 이직 정보</b>다.
+      내 연봉이 동기 대비 어디쯤인지, 우리 과 선배들은 어디로 이직했는지 — 지금 어디서도 볼 수 없다.
+      블라인드는 회사별이지 학교별이 아니기 때문이다.
+      <b>재직 인증을 하면 졸업생 라운지와 학교별 연봉 비교가 열리고, 안 하면 못 본다.</b>
+    </div>
+    <div class="flow"><span>재직 인증</span><i>→</i><span>졸업생 라운지 개방</span><i>→</i><span>학교별 연봉·이직 열람</span><i>→</i><span>계속 보려면 계속 갱신</span></div>
+    <div class="kv">
+      <div><b>얻는 것</b><span>갱신되는 재직 정보</span></div>
+      <div><b>강점</b><span>한 번이 아니라 지속 갱신</span></div>
+      <div><b>약점</b><span>라운지가 비면 인증 유인 없음</span></div>
+    </div>
+    <div class="take blue">잡플래닛이 <b>&lsquo;리뷰 1건 쓰면 6개월~1년 열람권&rsquo;</b> 구조로 이미 검증한 방식입니다. 다만 <b>B로 시드를 만든 다음에 열어야</b> 합니다. 빈 방을 먼저 열면 인증할 이유가 없습니다.</div>
+  </div>
+
+  <div class="card" style="background:#FFF6F3;border-color:#F5CFC2">
+    <h3 style="color:var(--red)">검토했다가 폐기한 안 · 학교 조사 대행</h3>
+    <div class="sub">발표에서 질문이 나올 수 있으므로 기록해 둡니다</div>
+    <div style="margin-top:16px;font-size:13.5px;line-height:1.85;color:var(--sub)">
+      <b style="color:var(--text)">안</b> — 대학은 매년 졸업생 취업 현황을 조사하지만 응답률이 낮다. 그 조사 창구를 우리가 대행하고, 총동문회·취업지원처 명의로 발송해 데이터를 얻는다.
+      <div style="height:12px"></div>
+      <b style="color:var(--red)">폐기 이유 1 · 자기모순</b><br />
+      학교가 시켜서 모은 데이터를 나중에 학교에 파는 구조가 된다. <b style="color:var(--text)">&ldquo;우리가 모아준 데이터를 왜 우리가 사느냐&rdquo;</b>는 반문에 답할 수 없다. 협상력을 스스로 없애는 설계다.
+      <div style="height:12px"></div>
+      <b style="color:var(--red)">폐기 이유 2 · 데이터 소유권</b><br />
+      학교 명의로 수집하는 순간 학교가 소유권을 주장할 근거가 생긴다. <b style="color:var(--text)">우리 데이터는 학교와 무관하게 확보돼 있어야</b> 협상 테이블에서 우위를 갖는다.
+      <div style="height:12px"></div>
+      <b style="color:var(--red)">폐기 이유 3 · 노출 리스크</b><br />
+      우리가 이 데이터를 모으고 있다는 사실을 학교가 먼저 알면 자체 구축을 검토하거나 제공을 막으려 들 수 있다. <b style="color:var(--text)">파일럿 단계에서는 학교 접촉 없이 학생·졸업생 채널로만 쌓는다.</b>
+    </div>
+    <div class="take"><b>학교와의 관계는 완성된 상품을 들고 가는 것으로 시작합니다.</b> &ldquo;귀교 졸업생 조사를 대행하겠습니다&rdquo;가 아니라 <b>&ldquo;귀교 졸업생 데이터를 이미 갖고 있습니다&rdquo;</b>입니다. 전자는 을이고 후자는 갑입니다. 데모 화면에 그 학교의 실제 데이터가 이미 떠 있으면 영업이 한 번에 끝납니다.</div>
+  </div>
+
+  <div class="warn">
+    <b>세 경로 모두에 공통으로 설계해야 할 두 가지</b><br />
+    · <b>최소 표본 규칙</b> — &ldquo;연세대 경영 22학번 카카오 마케팅&rdquo;까지 좁히면 개인이 특정됩니다. 표본이 N명 미만인 칸은 통계를 노출하지 않는 규칙이 반드시 필요합니다.<br />
+    · <b>인증 방식의 마찰 차이</b> — 회사 이메일 인증이 가장 마찰이 적고(블라인드가 검증), 재직증명서는 저항이 큽니다. 합격 메일은 신입에게만 통합니다. 경로별로 다른 방식을 써야 합니다.
+  </div>
+</section>
+
+<!-- 5. 데이터 명세 -->
+<section>
+  <div class="eyebrow">05 · DATA SPEC</div>
+  <h2>유저가 무엇을 하고, 우리는 무엇을 받는가</h2>
+  <p class="lead">앞 섹션이 <b>어떤 명분으로 받을지</b>였다면, 여기는 <b>실제로 어떤 필드를 받을지</b>입니다. 구현 착수 시 이 표가 기준 문서가 됩니다.</p>
+
+  <div class="card">
+    <h3>전체 관계도 · 무엇이 무엇을 먹여 살리는가</h3>
+    <div class="sub">행 = 유저 행동 5가지 · 열 = 수익 모델 5개 · 교차점이 의존 관계입니다</div>
+    <div id="c13"></div>
+    <div class="take blue">
+      <b>가로로 읽으면 「이 행동이 무엇을 먹여 살리는가」, 세로로 읽으면 「이 BM이 무엇에 의존하는가」입니다.</b><br />
+      ① <b>B 합격 인증 행이 가장 꽉 찼습니다</b> — 4개 BM에 핵심(●)으로 걸립니다. 최우선 구현 대상인 이유입니다.<br />
+      ② <b>BM 3 열은 점이 두 개뿐입니다.</b> 재직 인증에만 의존하고 선례도 없어, 12개월 이후 트랙인 근거가 그림으로 드러납니다.<br />
+      ③ <b>BM 4는 유일한 지출 열</b>(빨간 점선)입니다. 매출이 아니라 원재료를 사오는 비용이며, 재원은 BM 1·5에서 나옵니다.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>순환 구조 · 돈이 한 바퀴 도는 방식</h3>
+    <div class="sub">후배가 낸 돈이 선배에게 가고, 선배의 데이터가 다시 후배에게 팔린다</div>
+    <div id="c14"></div>
+    <div class="take"><b>이 고리가 닫히면 외부 자금 없이 돌아갑니다.</b> 후배의 구독료가 선배 캐시백의 재원이 되고, 그 캐시백을 받은 선배의 데이터가 다음 후배에게 팔립니다. 단 <b>고리가 시작되려면 첫 선배가 필요</b>하며, 그 시드는 합격 인증 배지(수집 경로 B)로 만듭니다.</div>
+  </div>
+
+  <div class="card">
+    <h3>유저 행동 5가지와 수집 필드</h3>
+    <div class="sub">각 행동이 어느 BM의 원재료가 되는지 함께 표기</div>
+    <div class="tblwrap">
+    <table>
+      <thead><tr>
+        <th style="width:17%">유저 행동</th>
+        <th style="width:10%">주체 · 시점</th>
+        <th style="width:35%">수집 필드</th>
+        <th style="width:20%">인증 · 검증</th>
+        <th style="width:18%">쓰이는 곳</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="co">지원 기록<small>Application Log</small></span></td>
+          <td>재학생<br /><span style="color:var(--muted)">취준 중 상시</span></td>
+          <td>기업명 · 직무 · 지원일 · <b>공고 원본 링크(URL)</b> · 전형 단계(서류/인적성/1차/임원) · 단계별 결과 · 최종 결과</td>
+          <td><span style="color:var(--muted)">없음 (자기 기록)</span><br />합격 시에만 증빙 요구</td>
+          <td>BM 2 진단<br />BM 1 전형 후기</td>
+        </tr>
+        <tr class="hi">
+          <td><span class="co">합격 인증<small>Offer Verification</small></span></td>
+          <td>합격자<br /><span style="color:var(--muted)">합격 직후</span></td>
+          <td>기업명 · 직무 · 입사 예정일 · 전형 유형(공채/수시/인턴전환)</td>
+          <td><b>합격 메일 캡처</b> 또는 오퍼레터<br />이름·사번 마스킹 허용</td>
+          <td>BM 1 · 2 · 5<br /><b>모든 축의 시드</b></td>
+        </tr>
+        <tr>
+          <td><span class="co">합격 자료 등록<small>Content Upload</small></span></td>
+          <td>합격자<br /><span style="color:var(--muted)">합격 후 1개월</span></td>
+          <td>최종 스펙(학점·어학·자격증) · 인턴/대외활동 이력 · 자소서 문항별 원문과 작성 의도 · <b>면접 후기(분위기·압박 강도·본 역량)</b> · 탈락 기업과 이후 수정 사항</td>
+          <td>본인 저작물 · 등록 시 동의<br />기업 기밀 자동 마스킹</td>
+          <td>BM 1 리포트<br />(핵심 콘텐츠)</td>
+        </tr>
+        <tr>
+          <td><span class="co">재직 인증<small>Employment Verification</small></span></td>
+          <td>졸업생<br /><span style="color:var(--muted)">졸업 후 상시</span></td>
+          <td>회사명 · 직무 · 재직 시작일 · 연봉 구간 · 이직 이력</td>
+          <td><b>회사 이메일 인증</b>(1순위)<br />재직증명서(2순위)</td>
+          <td>BM 5 대시보드<br />BM 3 채널 리포트</td>
+        </tr>
+        <tr>
+          <td><span class="co">진단 입력<small>Self Assessment</small></span></td>
+          <td>재학생 전학년<br /><span style="color:var(--muted)">1~4학년 상시</span></td>
+          <td>학교·학과·학번 · 현재 스펙 · 목표 기업·직무 · 캠퍼스픽 활동 이력 연동</td>
+          <td>에타 학교 인증 승계</td>
+          <td>BM 2 진단<br />캠퍼스픽 활동 추천</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="take blue"><b>기본 정보(기업명·직무)는 항상 무료로 공개합니다.</b> 검색이 되어야 유료 항목이 팔리기 때문입니다. 페이월은 그 아래 상세 필드에만 겁니다.</div>
+  </div>
+
+  <div class="card" style="border-color:var(--amber);border-width:2px">
+    <h3>공고 링크(URL) 수집 · 왜 별도로 다루는가</h3>
+    <div class="sub">한 줄 입력값이지만 파생 가치가 가장 큰 필드</div>
+    <div id="c11"></div>
+    <div class="take" style="background:var(--ambersoft);color:#6E4A05">
+      <b style="color:var(--amber)">링크에서 도메인만 뽑으면 「어느 플랫폼을 통한 지원이 합격으로 이어지는가」가 계산됩니다.</b>
+      채용 플랫폼들은 자사 지원까지만 볼 수 있고 <b>최종 합격 여부는 모릅니다.</b> 우리는 학생이 합격을 기록하므로 끝을 봅니다.
+      도메인 단위 집계이므로 개인정보에 해당하지 않고, 크롤링도 아닙니다.
+    </div>
+
+    <div style="margin-top:20px;font-size:13.5px;line-height:1.85;color:var(--sub)">
+      <div style="padding:12px 0;border-bottom:1px solid var(--line)">
+        <b style="color:var(--text)">쓰임 1 · 후배용 리포트 콘텐츠 <span style="color:var(--green)">(권장)</span></b><br />
+        &ldquo;이 회사는 자사 채용 홈페이지 직접 지원자의 합격 비율이 높다&rdquo; — BM 1 리포트에서 <b style="color:var(--text)">다른 서비스가 못 만드는 항목</b>이 됩니다.
+      </div>
+      <div style="padding:12px 0;border-bottom:1px solid var(--line)">
+        <b style="color:var(--text)">쓰임 2 · 무료 공개 PR <span style="color:var(--green)">(권장)</span></b><br />
+        진학사 캐치가 신입 공고 분석 리포트로 언론에 반복 노출되는 것과 같은 방식입니다. <b style="color:var(--text)">파는 것보다 브랜드 효과가 큽니다.</b>
+      </div>
+      <div style="padding:12px 0">
+        <b style="color:var(--red)">쓰임 3 · 채용 플랫폼에 판매 <span style="color:var(--red)">(비권장)</span></b><br />
+        ① 자기에게 불리한 데이터를 사줄 이유가 없습니다. <b style="color:var(--text)">1위 플랫폼은 절대 사지 않습니다.</b><br />
+        ② 유리한 곳만 사면 그것은 데이터 사업이 아니라 마케팅 자료 판매입니다.<br />
+        ③ <b style="color:var(--text)">2026.07 사람인 MOU와 충돌합니다.</b> 파트너를 평가하는 데이터를 파는 것은 관계를 깹니다.
+      </div>
+    </div>
+
+    <div class="warn">
+      <b>구현 시 주의</b><br />
+      · URL 전문을 저장하되 <b>분석은 도메인 단위로만</b> 합니다. 공고 상세 페이지 내용은 저장하지 않습니다(저작권·크롤링 이슈 회피).<br />
+      · 공고는 마감되면 사라지므로 <b>도메인·수집 시점·기업명을 함께</b> 기록해야 나중에 의미가 남습니다.<br />
+      · 학생 입력 부담이 큰 필드이므로, <b>붙여넣기 한 번으로 기업명·직무가 자동 채워지는 UX</b>가 반드시 필요합니다. 이것이 수집률을 결정합니다.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>구현 우선순위</h3>
+    <div class="sub">무엇부터 만들 것인가</div>
+    <div id="c12"></div>
+    <div class="take"><b>합격 인증이 1순위입니다.</b> 개발 비용이 가장 낮고 모든 BM의 시드가 됩니다. 진단(BM 2)은 데이터가 쌓이기 전에는 정확도가 나오지 않으므로 뒤로 갑니다.</div>
+  </div>
+</section>
+
+>
+<section>
+  <div class="eyebrow">06 · BENCHMARK</div>
+  <h2>참고할 플랫폼 10곳</h2>
+  <p class="lead">취업 컨설팅 업체가 아니라, <b>정보나 연결을 팔아 돈을 버는 플랫폼</b>을 기준으로 다시 골랐습니다. 우리가 어느 칸을 비워두고 있는지 보기 위한 표입니다.</p>
+
+  <div class="card">
+    <div class="tblwrap">
+    <table>
+      <thead><tr>
+        <th style="width:20%">플랫폼</th>
+        <th style="width:12%">수익 구조</th>
+        <th style="width:38%">무엇을 팔아서 버는가</th>
+        <th style="width:30%">우리가 참고할 점 / 다른 점</th>
+      </tr></thead>
+      <tbody>
+        <tr class="hi">
+          <td><span class="co">잡플래닛<small>기업 리뷰 · 연봉</small></span></td>
+          <td><span class="tag2 t-sub">열람 구독</span></td>
+          <td>기업 리뷰·연봉·면접후기를 페이월 뒤에 두고, <b>리뷰 1건을 쓰면 6개월~1년 열람권</b>을 주는 기여형 구조. 여기에 월 정기 프리미엄 멤버십을 얹음. 대학 웹메일 인증 학생에게 프리미엄을 여는 <b>제휴대학 서비스</b>도 운영.</td>
+          <td><b>BM 1번의 직접 원형.</b> 다만 잡플래닛은 &lsquo;남의 회사 리뷰&rsquo;를 팔고 우리는 <b>&lsquo;우리 학교 선배&rsquo;</b>를 판다. 이미 대학 채널을 노리고 있다는 점은 경고 신호.</td>
+        </tr>
+        <tr>
+          <td><span class="co">블라인드<small>재직자 익명 커뮤니티</small></span></td>
+          <td><span class="tag2 t-ad">광고</span> <span class="tag2 t-b2b">채용</span></td>
+          <td>회사 메일 인증으로 재직자만 입장하는 폐쇄 커뮤니티. 열람은 무료로 열고 <b>광고(블라인드 Ad)</b>와 채용 서비스 <b>블라인드 하이어</b>로 수익화.</td>
+          <td><b>인증이 곧 해자</b>라는 증명. 우리의 학교 인증도 같은 역할을 한다. 단 블라인드는 <b>무료 개방</b>으로 갔다는 점을 유료화 설계 시 반드시 고려.</td>
+        </tr>
+        <tr>
+          <td><span class="co">원티드<small>채용 플랫폼</small></span></td>
+          <td><span class="tag2 t-fee">성사 수수료</span></td>
+          <td>기업에서 채용 수수료를 받고, <b>합격자와 추천인에게 각 50만원</b>의 합격 보상금을 지급(정규직 기준, 입사 후 93일 초과 재직 조건). 성과가 나야 돈이 오가는 구조.</td>
+          <td><b>BM 4번의 직접 원형.</b> 원티드는 경력직 중심이라 <b>신입 구간이 비어 있다.</b> 우리가 들어갈 자리.</td>
+        </tr>
+        <tr>
+          <td><span class="co">캐치<small>진학사</small></span></td>
+          <td><span class="tag2 t-ad">채용광고</span> <span class="tag2 t-b2b">인재풀</span></td>
+          <td>대기업·중견 공고와 기업정보를 학생에게 무료 제공하고, 기업에는 <b>상위권 신입·경력 인재 풀</b>을 제공. 신입 채용 공고 분석 리포트를 정기 발표해 존재감 확보.</td>
+          <td><b>BM 3번의 원형.</b> 대학생 대상 신입 인재풀에서 가장 앞서 있는 곳. 다만 캐치에는 <b>학교 커뮤니티가 없다.</b></td>
+        </tr>
+        <tr>
+          <td><span class="co">자소설닷컴<small>리멤버앤컴퍼니 · 2025.1 합병</small></span></td>
+          <td><span class="tag2 t-sub">콘텐츠 열람</span> <span class="tag2 t-fee">중개</span></td>
+          <td>합격 자소서 열람으로 취준생을 모으고, <b>합격코치</b>에서 개인 코치의 첨삭 상품을 중개. 합병 후 리멤버의 신입~경력 생애주기 확장 축.</td>
+          <td>&lsquo;합격 자료 열람&rsquo;에 수요가 있다는 증명. 다만 <b>익명 자료</b>라 신뢰도가 낮다. 우리는 실명·학교 인증으로 그 약점을 친다.</td>
+        </tr>
+        <tr>
+          <td><span class="co">리멤버<small>명함 기반 커리어</small></span></td>
+          <td><span class="tag2 t-fee">스카웃 수수료</span></td>
+          <td>명함으로 확보한 직장인 DB를 기반으로 기업·헤드헌터에게 <b>스카웃 제안</b>을 판매. 자소설닷컴 합병으로 신입 시장까지 확장 중.</td>
+          <td><b>가장 강력한 잠재 경쟁자.</b> 다만 리멤버의 데이터는 &lsquo;직장인&rsquo;에서 시작하고, 우리는 <b>&lsquo;재학생&rsquo;에서 시작</b>한다. 진입 지점이 정반대.</td>
+        </tr>
+        <tr>
+          <td><span class="co">코멘토<small>현직자 멘토링</small></span></td>
+          <td><span class="tag2 t-edu">유료 교육</span></td>
+          <td>현직자 Q&amp;A로 시작했으나 <b>직무부트캠프(5주)·실무PT 등 유료 교육으로 수익 축을 이동.</b> 멘토는 활동에 따라 크레딧을 받고 현금 환급(기타소득, 원천징수 8.8%).</td>
+          <td><b>가장 중요한 교훈.</b> Q&amp;A 중개 수수료만으로는 사업이 서지 않아 교육으로 옮겼다. 우리가 <b>중개가 아니라 구독</b>을 택해야 하는 이유.</td>
+        </tr>
+        <tr>
+          <td><span class="co">링커리어<small>대외활동 · 공모전</small></span></td>
+          <td><span class="tag2 t-ad">광고</span></td>
+          <td>공모전·대외활동·인턴 정보를 모아 대학생을 확보하고, <b>활동 주최사 홍보 광고</b>로 수익화. 정보 열람형이라 이용자와의 관계 밀도는 낮음.</td>
+          <td><b>캠퍼스픽의 직접 경쟁자.</b> 우리가 광고형에 머무르면 링커리어와 같은 천장에 갇힌다. <b>거래형으로 넘어가야 하는 이유.</b></td>
+        </tr>
+        <tr>
+          <td><span class="co">사람인<small>사람인HR</small></span></td>
+          <td><span class="tag2 t-ad">채용광고</span> <span class="tag2 t-fee">중개</span></td>
+          <td>채용 공고 광고가 본체. 여기에 <b>사람인 스토어</b>를 붙여 자소서·면접 코칭, 자격증 강의를 중개. 2026.07 비누랩스와 전략적 MOU 체결.</td>
+          <td><b>경쟁자이자 파트너.</b> 공고 소싱은 제휴로 풀고, 우리는 <b>사람인이 못 가진 학교 데이터</b>에 집중하는 분업이 현실적.</td>
+        </tr>
+        <tr>
+          <td><span class="co">잡코리아 · 알바몬<small>잡코리아</small></span></td>
+          <td><span class="tag2 t-ad">채용광고</span></td>
+          <td>공고 게재·노출 광고와 인재DB 열람권이 주 수익. 구직자는 전면 무료. 취업 사교육비 조사 등 <b>데이터 콘텐츠로 트래픽을 확보</b>하는 전략.</td>
+          <td>광고형 모델의 완성형이자 <b>천장</b>. 트래픽이 아무리 커도 구직자에게서는 한 푼도 벌지 못한다.</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="warn">
+      <b>공개되지 않은 정보는 비워 두었습니다.</b> 잡플래닛 멤버십 요금, 사람인 스토어 수수료율, 코멘토 크레딧 단가, 각 사 채용 광고 단가는 모두 비공개입니다. 추정치를 채우지 않았습니다.
+    </div>
+    <div class="src">각 사 공식 웹사이트·고객센터·앱 소개 페이지 및 보상정책, 원티드 고객센터 「추천·합격 보상금」 안내, 전자신문·플래텀 등 보도. 커피챗(C2C 매칭)은 2025년 1월 17일 파트너에게 종료를 통보하고 2월 7일 B2C 서비스를 종료해 현재 유효하지 않으므로 목록에서 제외했습니다.</div>
+  </div>
+
+  <div class="card">
+    <h3>이 표가 말해주는 한 가지</h3>
+    <div class="sub">수익 구조별 분포와 빈칸</div>
+    <div id="c6"></div>
+    <div class="take"><b>10곳 중 학생에게 직접 돈을 받는 곳은 잡플래닛과 자소설닷컴뿐입니다.</b> 나머지는 전부 기업에서 법니다. 그런데 그 둘조차 <b>학교 단위 데이터는 갖고 있지 않습니다.</b> 우리가 비어 있는 칸은 &lsquo;학교 인증 기반 정보 구독&rsquo;입니다.</div>
+  </div>
+
+  <div class="card">
+    <h3>비어 있는 칸 · 졸업생 실시간 데이터</h3>
+    <div class="sub">조사 결과 · 반쪽은 이미 있고, 핵심 반쪽은 비어 있음</div>
+    <div id="c8"></div>
+    <div class="take blue">
+      <b>대학마다 자체 취업관리시스템이 있지만 전부 &lsquo;재학생 관리&rsquo;용입니다.</b>
+      잡플래닛은 학생용 콘텐츠 열람권을 팔고, 대학 관리자 서비스는 &lsquo;우리 학교 학생이 얼마나 썼는지&rsquo; 수준입니다.
+      <b>우리 학교 졸업생이 지금 어느 기업·직무에 있는지를 실시간으로 보여주는 상용 서비스는 확인되지 않았습니다.</b>
+      대학이 이 데이터를 받는 공식 경로는 한국교육개발원 취업통계시스템 하나이며, 12월 31일 기준으로 <b>연 1회, 총계로만</b> 나옵니다.
+    </div>
+    <div class="warn">
+      <b>왜 아무도 못 했는가 &mdash; 그리고 왜 우리는 되는가</b><br />
+      · 잡플래닛·블라인드는 <b>직장인은 있지만 그 사람의 출신 학교를 모릅니다.</b><br />
+      · 대학은 <b>학교는 알지만 졸업하면 연락이 끊깁니다.</b><br />
+      · <b>학교 인증을 가진 채로 졸업 후에도 앱에 남아 있는 사용자</b>는 에브리타임에만 있습니다. 이것이 유일한 진입장벽입니다.<br />
+      · <b style="color:#7A5B0A">다만 안심할 상황은 아닙니다.</b> 잡플래닛은 이미 다수 대학과 계약 관계를 갖고 있어, 졸업생 데이터를 붙이는 순간 같은 상품이 됩니다. 선점 속도가 중요합니다.
+    </div>
+    <div class="src">조사 범위: 국내 대학 취업관리시스템(커리어연세·고려대 SSC·명지대·인하대·강원대 등) 공개 페이지, 잡플래닛 제휴대학 서비스 안내, 한국교육개발원 취업통계시스템(swiss.kedi.re.kr) 운영 방식. 「확인되지 않았다」는 것이 「존재하지 않는다」의 증명은 아니며, 비공개 B2B 계약은 검색으로 확인되지 않을 수 있습니다.</div>
+  </div>
+
+</section>
+
+<!-- 5. 시뮬레이션 -->
+<section>
+  <div class="eyebrow">07 · SIMULATION</div>
+  <h2>매출은 이렇게 계산한다</h2>
+  <p class="lead">숫자를 맞히는 것이 목적이 아니라, <b>어떤 값이 매출을 결정하는지</b>를 드러내는 것이 목적입니다. 아래 네 개만 정해지면 매출이 나옵니다.</p>
+
+  <div class="calc">
+    <h3>BM 1 · 선배 리포트 구독 매출 계산기</h3>
+    <div class="sub">막대를 움직이면 아래 계산식이 그대로 따라 바뀝니다. 기본값은 예시일 뿐이며, 확정 수치가 아닙니다.</div>
+    <div class="inputs">
+      <div class="inp">
+        <label>① 대상 학교의 <b>4학년 재학생 수</b> — <b id="v1">30,000</b>명</label>
+        <input type="range" id="r1" min="5000" max="200000" step="5000" value="30000" />
+      </div>
+      <div class="inp">
+        <label>② 그중 <b>구독 전환율</b> — <b id="v2">3.0</b>%</label>
+        <input type="range" id="r2" min="0.5" max="15" step="0.5" value="3" />
+      </div>
+      <div class="inp">
+        <label>③ <b>월 구독료</b> — <b id="v3">4,900</b>원</label>
+        <input type="range" id="r3" min="1900" max="19900" step="1000" value="4900" />
+      </div>
+      <div class="inp">
+        <label>④ <b>평균 구독 유지 개월</b> — <b id="v4">4</b>개월</label>
+        <input type="range" id="r4" min="1" max="12" step="1" value="4" />
+      </div>
+    </div>
+
+    <div class="formula" id="fx"></div>
+
+    <div class="result">
+      <div><b>연 매출 (총액)</b><span id="rev">—</span></div>
+      <div><b>선배 정산 후 플랫폼 몫 (30%)</b><span id="net">—</span></div>
+    </div>
+
+    <div style="margin-top:18px;font-size:12.5px;color:#8DA0BD;line-height:1.85">
+      <b style="color:#fff">네 값 중 우리가 모르는 것은 ②뿐입니다.</b>
+      ①은 학교와 합의하면 확정되고, ③④는 우리가 정합니다.
+      따라서 <b style="color:var(--red)">파일럿의 목표는 딱 하나 — 전환율 측정</b>입니다.
+      이 숫자 하나만 실측되면 나머지 매출은 산수입니다.
+    </div>
+  </div>
+
+<div class="calc" style="background:#2A1D4A">
+    <h3>BM 5 · 대학 라이선스 매출 계산기</h3>
+    <div class="sub">학교가 내는 돈이므로 변수는 <b style="color:#fff">두 개</b>뿐입니다. 학교 수 × 학교당 연 계약액.</div>
+    <div class="inputs">
+      <div class="inp">
+        <label>① <b>계약 학교 수</b> — <b id="u1">30</b>개교 <span id="u1p" style="color:#B49BE8"></span></label>
+        <input type="range" id="q1" min="5" max="200" step="5" value="30" />
+      </div>
+      <div class="inp">
+        <label>② <b>학교당 연 계약액</b> — <b id="u2">2,000</b>만원</label>
+        <input type="range" id="q2" min="500" max="6000" step="100" value="2000" />
+      </div>
+    </div>
+
+    <div class="formula" id="ufx"></div>
+
+    <div class="result">
+      <div><b>연 매출</b><span id="urev">—</span></div>
+      <div><b>3년 누적 (갱신률 80% 가정)</b><span id="u3y">—</span></div>
+    </div>
+
+    <div id="ubid" style="margin-top:16px;border-radius:12px;padding:14px 16px;font-size:13px;line-height:1.75"></div>
+
+    <div style="margin-top:18px;font-size:12.5px;color:#B49BE8;line-height:1.85">
+      <b style="color:#fff">기본값의 근거</b><br />
+      ① 30개교 = 에브리타임 지원 397개 캠퍼스의 약 7.6%.
+      ② 2,000만원은 <b style="color:#fff">수의계약 한도</b>에서 정한 값입니다. 이 선을 넘으면 공개입찰 구간으로 들어갑니다.<br />
+      <b style="color:#fff">②는 공개된 계약 사례가 없어 우리가 정하는 값이며, 실측치가 아닙니다.</b>
+      대학이 학생 수에 비례해 지불하는지 정액으로 지불하는지도 공개돼 있지 않아, <b style="color:#fff">정액 구조로 단순화했습니다.</b>
+    </div>
+  </div>
+
+  <div class="card" style="background:#FAF7FF;border-color:#DCCFF5">
+    <h3 style="color:#7B4FD1">1인당 단가는 매출 모델이 아니라 영업 대사입니다</h3>
+    <div class="sub">계산기에서 뺀 이유</div>
+    <div style="margin-top:16px;font-size:13.5px;line-height:1.85;color:var(--sub)">
+      <div style="padding:11px 0;border-bottom:1px solid #E7DEF7">
+        <b style="color:var(--text)">돈은 학생이 아니라 학교가 냅니다.</b> 따라서 매출은 &lsquo;학교 수 × 학교당 계약액&rsquo; 두 변수로 끝납니다.
+        여기에 재학생 수를 곱했다가 다시 나누는 것은 계산 단계만 늘릴 뿐 정확도를 높이지 않습니다.
+      </div>
+      <div style="padding:11px 0;border-bottom:1px solid #E7DEF7">
+        <b style="color:var(--text)">1인당 단가는 가격 저항을 받아치는 문장입니다.</b>
+        담당자가 &ldquo;2,000만원은 부담된다&rdquo;고 할 때 —
+        <b style="color:#7B4FD1">&ldquo;재학생 1만 명 기준 1인당 연 2,000원입니다&rdquo;</b>로 환산해 답하는 용도입니다.
+        품의서 사유란에 그대로 쓸 수 있는 표현이지만, <b style="color:var(--text)">우리 매출 모델과는 무관합니다.</b>
+      </div>
+      <div style="padding:11px 0">
+        <b style="color:var(--text)">그래서 이렇게 씁니다.</b>
+        매출 시뮬레이션에는 두 변수만 두고, 1인당 환산은 <b style="color:#7B4FD1">영업 스크립트</b>로 따로 관리합니다.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>세 가지 시나리오</h3>
+    <div class="sub">위 계산기의 값을 보수·기본·공격으로 고정했을 때</div>
+    <div id="c9"></div>
+    <div class="take"><b>변수는 두 개뿐이고, 그중 우리가 통제할 수 있는 것은 학교 수 하나입니다.</b> 학교당 계약액은 2,000만원 위로 올리는 순간 공개입찰 구간에 들어가 영업 사이클이 길어지므로 사실상 상한이 정해져 있습니다. 따라서 <b>매출을 늘리는 방법은 단가 인상이 아니라 학교 수 확대뿐</b>입니다.</div>
+    <div class="warn">
+      <b>2,000만원이라는 선이 왜 중요한가</b><br />
+      국가계약법상 일정 금액 이상은 나라장터 공개입찰이 원칙이며, 대학 실무에서는 총액 2천만원을 기준으로 입찰과 수의계약이 갈립니다(서울대학교 산학협력단 구매 규정 등에서 확인).
+      <b>연 계약액을 2,000만원 이하로 설계하면 입찰 없이 수의계약이 가능</b>해 영업 사이클이 크게 짧아집니다.
+      가격을 낮게 잡는 것이 오히려 전략인 구간입니다.
+    </div>
+    <div class="src">모수는 비누랩스 공표 기준 에브리타임 지원 캠퍼스 397개. 예산 규모는 고용노동부 대학일자리플러스센터 사업 안내(거점형 연 4.2억, 2020년 소형 대학당 연 2억·정부 50%). 계약 단가는 어느 대학도 공개하지 않아 본 계산기의 ③④는 설계값입니다.</div>
+  </div>
+
+  <div class="warn">
+    <b>발표에서 이렇게 말하십시오.</b> &ldquo;우리는 시장 규모를 추정하지 않았습니다. 취업 컨설팅은 표준산업분류상 독립 업종이 아니어서 매출 통계가 집계되지 않고, 설문마다 1인당 지출이 360만원과 455만원으로 갈립니다.
+    어느 쪽을 곱하느냐에 따라 결과가 조 단위로 달라지므로, <b>추정치 대신 우리가 직접 측정할 변수 하나(전환율)를 파일럿 목표로 잡았습니다.</b>&rdquo;
+    — 이 답변이 억지 추정보다 훨씬 강합니다.
+  </div>
+</section>
+
+<section style="padding-bottom:40px">
+  <div class="card" style="background:var(--ink);border:none;color:#fff">
+    <div class="eyebrow">SUMMARY</div>
+    <h2 style="color:#fff;margin-top:10px">한 문장으로</h2>
+    <p style="color:#A9BBD6;margin-top:16px;font-size:17px;line-height:1.8;max-width:820px">
+      에브리타임에 남아 있는 <b style="color:#fff">취업 성공 선배</b>의 데이터를 모아,
+      캠퍼스픽에서 <b style="color:#fff">후배에게는 구독으로, 기업에는 데이터로</b> 판다.<br />
+      <span style="color:var(--red);font-weight:700">선배는 돈과 명예를 얻고, 후배는 합격에 가까워지고, 캠퍼스픽은 광고를 넘어선 매출을 얻는다.</span>
+    </p>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <b style="color:#fff">에브리타임 레버리지 · 캠퍼스픽 수익화 설계</b><br />
+    VINU TEAM 워크숍 4조 · 2026.08<br />
+    출처: 국가데이터처 경제활동인구조사 청년층 부가조사 · 한국경영자총협회 신규채용 실태조사 · 교육의봄·청년재단 2026 취업사교육비 실태조사 · 비누랩스 2024 연말결산 · 각 플랫폼 공식 안내 페이지<br />
+    <span style="color:#5F7194">본 문서의 통계 수치는 모두 출처가 확인된 인용치입니다. 수익 모델 2·3·4번과 계산기 기본값은 제안·예시이며 실측 데이터가 아닙니다.</span>
+  </div>
+</footer>
+
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;}
+function txt(x,y,s,o){o=o||{};const t=el('text',{x:x,y:y,'font-size':o.fs||11,
+  'font-family':"Pretendard, sans-serif",'font-weight':o.fw||400,
+  fill:o.fill||'#8391A8','text-anchor':o.ta||'middle'});t.textContent=s;return t;}
+function mk(id,w,h){const s=el('svg',{viewBox:'0 0 '+w+' '+h,width:'100%'});
+  document.getElementById(id).appendChild(s);return s;}
+
+/* C1 · 구조 흐름 */
+(function(){
+  const W=940,H=220,s=mk('c1',W,H);
+  const box=[
+    ['에브리타임','전국 397개 캠퍼스\\n월 251만명','#16233C','트래픽'],
+    ['캠퍼스픽','에타 안에 임베디드된\\n커리어 서비스','#2E5FD3','수익화 무대'],
+    ['매출','구독 · 진단 · 기업 데이터\\n· 채용 연계','#E03A16','결과']
+  ];
+  const bw=268, gap=(W-3*bw)/2;
+  box.forEach((b,i)=>{
+    const x=i*(bw+gap);
+    s.appendChild(el('rect',{x:x,y:34,width:bw,height:120,rx:14,fill:b[2]}));
+    s.appendChild(txt(x+bw/2,26,b[3],{fs:11,fw:700,fill:'#8391A8'}));
+    s.appendChild(txt(x+bw/2,78,b[0],{fs:24,fw:800,fill:'#fff'}));
+    b[1].split('\\n').forEach((ln,k)=>
+      s.appendChild(txt(x+bw/2,106+k*18,ln,{fs:12.5,fill:'#A9BBD6'})));
+    if(i<2){
+      const ax=x+bw+gap/2;
+      s.appendChild(el('polygon',{points:(ax-14)+',86 '+(ax+14)+',94 '+(ax-14)+',102',fill:'#B7C2D4'}));
+    }
+  });
+  s.appendChild(el('rect',{x:0,y:176,width:W,height:36,rx:10,fill:'#EAF0FE'}));
+  s.appendChild(txt(W/2,199,'연결 고리 = 에브리타임을 쓰다가 취업에 성공한 선배의 데이터',
+    {fs:14,fw:700,fill:'#2E5FD3'}));
+})();
+
+/* C2 · 첫 취업 소요기간 */
+(function(){
+  const data=[[2020,10.0],[2021,10.1],[2022,10.8],[2023,10.4],[2024,11.5],[2025,11.3],[2026,11.2]];
+  const W=940,H=250,L=48,R=24,T=34,B=40,s=mk('c2',W,H);
+  const min=9.4,max=12.0;
+  const X=i=>L+i*(W-L-R)/(data.length-1);
+  const Y=v=>T+(max-v)/(max-min)*(H-T-B);
+  for(let g=10;g<=12;g+=0.5){
+    s.appendChild(el('line',{x1:L,x2:W-R,y1:Y(g),y2:Y(g),stroke:'#EDF1F7','stroke-width':1}));
+    s.appendChild(txt(L-12,Y(g)+4,g.toFixed(1),{ta:'end',fs:10.5}));
+  }
+  let area=data.map((d,i)=>X(i)+','+Y(d[1])).join(' ')+' '+X(data.length-1)+','+(H-B)+' '+X(0)+','+(H-B);
+  s.appendChild(el('polygon',{points:area,fill:'#E03A16','fill-opacity':0.07}));
+  s.appendChild(el('polyline',{points:data.map((d,i)=>X(i)+','+Y(d[1])).join(' '),
+    fill:'none',stroke:'#E03A16','stroke-width':3.5,'stroke-linejoin':'round','stroke-linecap':'round'}));
+  data.forEach((d,i)=>{
+    s.appendChild(el('circle',{cx:X(i),cy:Y(d[1]),r:5.5,fill:'#fff',stroke:'#E03A16','stroke-width':3}));
+    s.appendChild(txt(X(i),Y(d[1])-16,d[1].toFixed(1),{fs:13,fw:800,fill:'#16233C'}));
+    s.appendChild(txt(X(i),H-14,d[0],{fs:11.5,fill:'#8391A8'}));
+  });
+})();
+
+/* C3 · 직무 경험 중요도 */
+(function(){
+  const W=440,H=250,s=mk('c3',W,H);
+  const data=[['2023',58.4],['2024',74.6],['2025',81.6]];
+  const T=40,BASE=190,max=100;
+  const Y=v=>BASE-(v/max)*(BASE-T);
+  const bw=96, gap=(W-40-3*bw)/2;
+  data.forEach((d,i)=>{
+    const x=20+i*(bw+gap);
+    s.appendChild(el('rect',{x:x,y:Y(d[1]),width:bw,height:BASE-Y(d[1]),rx:8,
+      fill:i===2?'#0E9F6E':'#8797B0'}));
+    s.appendChild(txt(x+bw/2,Y(d[1])-12,d[1]+'%',{fs:16,fw:800,fill:'#16233C'}));
+    s.appendChild(txt(x+bw/2,BASE+22,d[0]+'년',{fs:12.5,fw:700,fill:'#16233C'}));
+  });
+  s.appendChild(txt(20,BASE+52,'학벌·학점이 아니라 「무엇을 해봤는가」',{ta:'start',fs:12,fw:700,fill:'#0E9F6E'}));
+})();
+
+/* C4 · 분야별 지출 이용률 */
+(function(){
+  const W=440,H=352,s=mk('c4',W,H);
+
+  // 헤드라인 스탯
+  s.appendChild(el('rect',{x:0,y:0,width:W,height:56,rx:12,fill:'#16233C'}));
+  s.appendChild(txt(20,34,'취업 사교육에 돈을 써본 청년',{ta:'start',fs:13,fill:'#A9BBD6'}));
+  s.appendChild(txt(W-20,36,'93.7%',{ta:'end',fs:24,fw:800,fill:'#fff'}));
+  s.appendChild(txt(0,78,'그 93.7%가 어디에 썼는가 · 복수응답',{ta:'start',fs:12,fw:700,fill:'#4C5B75'}));
+
+  const rows=[
+    ['전공 자격증',52.1,'#8797B0'],
+    ['어학',43.4,'#8797B0'],
+    ['취업 컨설팅',40.0,'#E03A16'],
+    ['비전공 자격증',32.3,'#B7C2D4'],
+    ['IT·컴퓨터 활용',30.2,'#B7C2D4']
+  ];
+  const L=118,R=56,track=W-L-R,max=56;
+  rows.forEach((r,i)=>{
+    const y=96+i*40;
+    const on=i===2;
+    s.appendChild(txt(L-12,y+19,r[0],{ta:'end',fs:12.5,fw:on?800:600,fill:on?'#E03A16':'#16233C'}));
+    s.appendChild(el('rect',{x:L,y:y,width:track,height:26,rx:6,fill:'#EDF1F7'}));
+    s.appendChild(el('rect',{x:L,y:y,width:track*r[1]/max,height:26,rx:6,fill:r[2]}));
+    s.appendChild(txt(W-R+10,y+19,r[1].toFixed(1)+'%',{ta:'start',fs:12.5,fw:on?800:700,
+      fill:on?'#E03A16':'#16233C'}));
+  });
+
+  s.appendChild(el('rect',{x:0,y:298,width:W,height:44,rx:7,fill:'#EDF1F7'}));
+  s.appendChild(txt(12,316,'다섯 항목 모두 「사람이 붙는 코칭」입니다',
+    {ta:'start',fs:11.5,fw:700,fill:'#4C5B75'}));
+  s.appendChild(txt(12,334,'정보 열람 구독은 이 조사에 항목이 없습니다',
+    {ta:'start',fs:11.5,fw:700,fill:'#E03A16'}));
+})();
+
+/* C5 · BM 5축 */
+(function(){
+  const W=940,H=286,s=mk('c5',W,H);
+  s.appendChild(el('rect',{x:0,y:0,width:W,height:44,rx:10,fill:'#16233C'}));
+  s.appendChild(txt(W/2,28,'원재료 · 취업에 성공한 선배의 합격 데이터',{fs:14.5,fw:700,fill:'#fff'}));
+  const arms=[
+    ['1','선배 리포트 구독','후배','#2E5FD3','즉시'],
+    ['2','합격 예측 진단','후배','#0E9F6E','6개월'],
+    ['5','대학 라이선스','대학','#7B4FD1','즉시'],
+    ['3','기업 브랜딩·인재풀','기업','#C8860D','12개월'],
+    ['4','합격 축하금','기업','#E03A16','12개월']
+  ];
+  const bw=172, gap=(W-5*bw)/4;
+  arms.forEach((a,i)=>{
+    const x=i*(bw+gap);
+    s.appendChild(el('line',{x1:W/2,x2:x+bw/2,y1:44,y2:88,stroke:'#D6DEEA','stroke-width':1.5}));
+    s.appendChild(el('rect',{x:x,y:88,width:bw,height:122,rx:14,fill:'#fff',stroke:a[3],'stroke-width':2}));
+    s.appendChild(el('circle',{cx:x+24,cy:112,r:13,fill:a[3]}));
+    s.appendChild(txt(x+24,117,a[0],{fs:13,fw:800,fill:'#fff'}));
+    s.appendChild(txt(x+bw/2,152,a[1],{fs:13.5,fw:800,fill:'#16233C'}));
+    s.appendChild(txt(x+bw/2,176,a[2]+'가 낸다',{fs:12,fw:700,fill:a[3]}));
+    s.appendChild(txt(x+bw/2,198,'착수 '+a[4],{fs:11,fill:'#8391A8'}));
+  });
+  s.appendChild(el('rect',{x:0,y:232,width:W,height:38,rx:10,fill:'#EAF0FE'}));
+  s.appendChild(txt(W/2,256,'1·2번이 상품을 만들고 → 5번이 학교 예산으로 대량 보급하고 → 3·4번이 기업에 판다',
+    {fs:13.5,fw:700,fill:'#2E5FD3'}));
+})();
+
+/* C7 · 대학 B2B 가능/불가 */
+(function(){
+  const W=940,H=210,s=mk('c7',W,H);
+  const cols=[
+    ['정액 라이선스','가능','잡플래닛이 이미 다수 대학과 계약 중','#7B4FD1','#F3EEFC'],
+    ['취업률 성과 연동','불가','귀속 불가 · 시차 22개월 · 회계 불가','#E03A16','#FDEDE8']
+  ];
+  const bw=456, gap=W-2*bw;
+  cols.forEach((c,i)=>{
+    const x=i*(bw+gap);
+    s.appendChild(el('rect',{x:x,y:0,width:bw,height:170,rx:16,fill:c[4],stroke:c[3],'stroke-width':2}));
+    s.appendChild(txt(x+bw/2,44,c[0],{fs:19,fw:800,fill:'#16233C'}));
+    s.appendChild(el('rect',{x:x+bw/2-46,y:64,width:92,height:34,rx:9,fill:c[3]}));
+    s.appendChild(txt(x+bw/2,88,c[1],{fs:18,fw:800,fill:'#fff'}));
+    s.appendChild(txt(x+bw/2,128,c[2],{fs:12.5,fill:'#4C5B75'}));
+  });
+  s.appendChild(txt(W/2,196,'같은 대학 B2B라도 이 둘은 완전히 다른 이야기입니다',
+    {fs:12.5,fw:700,fill:'#8391A8'}));
+})();
+
+/* C6 · 지불자 분포 */
+(function(){
+  const W=940,H=210,s=mk('c6',W,H);
+  const groups=[
+    ['기업이 낸다',8,'#8797B0',['블라인드','원티드','캐치','리멤버','링커리어','사람인','잡코리아','자소설닷컴']],
+    ['학생이 낸다',2,'#E03A16',['잡플래닛','자소설닷컴']],
+    ['학생 + 학교 데이터',0,'#0E9F6E',['(비어 있음)']]
+  ];
+  const L=170,R=60,track=W-L-R,max=8;
+  groups.forEach((g,i)=>{
+    const y=24+i*58;
+    s.appendChild(txt(L-16,y+22,g[0],{ta:'end',fs:13,fw:700,fill:'#16233C'}));
+    s.appendChild(el('rect',{x:L,y:y,width:track,height:34,rx:8,fill:'#EDF1F7'}));
+    if(g[1]>0)
+      s.appendChild(el('rect',{x:L,y:y,width:track*g[1]/max,height:34,rx:8,fill:g[2]}));
+    else{
+      s.appendChild(el('rect',{x:L,y:y,width:track,height:34,rx:8,fill:'#E6F6F0',
+        stroke:'#0E9F6E','stroke-width':2,'stroke-dasharray':'7 5'}));
+      s.appendChild(txt(L+track/2,y+22,'← 우리가 들어갈 자리',{fs:13,fw:800,fill:'#0E9F6E'}));
+    }
+    if(g[1]>0) s.appendChild(txt(W-R+12,y+22,g[1]+'곳',{ta:'start',fs:13,fw:800,fill:'#16233C'}));
+  });
+  s.appendChild(txt(L,H-14,'※ 자소설닷컴은 두 구조를 겸해 중복 집계. 링커리어·잡코리아는 학생에게 전면 무료.',
+    {ta:'start',fs:11,fill:'#8391A8'}));
+})();
+
+/* 계산기 */
+(function(){
+  const won=n=>Math.round(n).toLocaleString('ko-KR');
+  const big=n=>{
+    if(n>=100000000) return (n/100000000).toFixed(2)+'억원';
+    if(n>=10000) return Math.round(n/10000).toLocaleString('ko-KR')+'만원';
+    return won(n)+'원';
+  };
+  const ids=['r1','r2','r3','r4'];
+  function upd(){
+    const a=+document.getElementById('r1').value;
+    const b=+document.getElementById('r2').value;
+    const c=+document.getElementById('r3').value;
+    const d=+document.getElementById('r4').value;
+    document.getElementById('v1').textContent=a.toLocaleString('ko-KR');
+    document.getElementById('v2').textContent=b.toFixed(1);
+    document.getElementById('v3').textContent=c.toLocaleString('ko-KR');
+    document.getElementById('v4').textContent=d;
+    const subs=a*b/100;
+    const rev=subs*c*d;
+    document.getElementById('fx').innerHTML=
+      '<b>구독자 수</b> = '+a.toLocaleString('ko-KR')+'명 × '+b.toFixed(1)+'% = <b>'+won(subs)+'명</b><br />'+
+      '<b>1인당 연 결제액</b> = '+won(c)+'원 × '+d+'개월 = <b>'+won(c*d)+'원</b><br />'+
+      '<span class="eq">연 매출 = '+won(subs)+'명 × '+won(c*d)+'원 = '+won(rev)+'원</span>';
+    document.getElementById('rev').textContent=big(rev);
+    document.getElementById('net').textContent=big(rev*0.3);
+  }
+  ids.forEach(id=>document.getElementById(id).addEventListener('input',upd));
+  upd();
+})();
+
+/* 대학 라이선스 계산기 */
+(function(){
+  const eok=n=>(n/100000000).toFixed(2)+'억원';
+  function upd(){
+    const n=+document.getElementById('q1').value;      // 학교 수
+    const per=+document.getElementById('q2').value*10000; // 학교당 원
+    document.getElementById('u1').textContent=n;
+    document.getElementById('u1p').textContent='(397개 캠퍼스의 '+(n/397*100).toFixed(1)+'%)';
+    document.getElementById('u2').textContent=(per/10000).toLocaleString('ko-KR');
+    const rev=n*per;
+    const y3=rev + rev*0.8 + rev*0.8*0.8;
+    document.getElementById('ufx').innerHTML=
+      '<b>연 매출</b> = '+n+'개교 × '+(per/10000).toLocaleString('ko-KR')+'만원'+
+      ' <span class="eq">= '+eok(rev)+'</span>';
+    document.getElementById('urev').textContent=eok(rev);
+    document.getElementById('u3y').textContent=eok(y3);
+    const b=document.getElementById('ubid');
+    if(per<=20000000){
+      b.style.background='#0E9F6E'; b.style.color='#fff';
+      b.innerHTML='<b>수의계약 구간</b> — 학교당 '+(per/10000).toLocaleString('ko-KR')+'만원은 2,000만원 이하이므로 공개입찰 없이 계약할 수 있습니다. 영업 사이클이 짧습니다.';
+    }else{
+      b.style.background='#E03A16'; b.style.color='#fff';
+      b.innerHTML='<b>공개입찰 구간</b> — 학교당 '+(per/10000).toLocaleString('ko-KR')+'만원은 2,000만원을 넘어 나라장터 입찰이 필요할 수 있습니다. 계약까지의 기간이 크게 늘어납니다.';
+    }
+  }
+  ['q1','q2'].forEach(id=>document.getElementById(id).addEventListener('input',upd));
+  upd();
+})();
+</script>
+</body>
+</html>

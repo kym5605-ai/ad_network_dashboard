@@ -1,0 +1,110 @@
+  지난 세션 12건 복원 — 「최근 작업」에서 열어 이어서 대화할 수 있습니다
+제휴 대시보드 로컬 서버 → http://127.0.0.1:8788/
+  「지금 갱신」 버튼과 스킬 버튼은 이 주소로 열었을 때만 동작합니다.
+  끄기: Ctrl+C
+[skill] 요청 weekly · owner=me
+[skill] 세션 시작 weekly · run=3b1c54114c01
+[skill] 요청 nweekly · owner=me
+[skill] 세션 시작 nweekly · run=31e5478c86b1
+[skill] 요청 apple-notion · owner=me
+[skill] 세션 시작 apple-notion · run=ddf4dfe67587
+[skill] 요청 disney-notion · owner=me
+[skill] 세션 시작 disney-notion · run=b0e72c333508
+  지난 세션 22건 복원 — 「최근 작업」에서 열어 이어서 대화할 수 있습니다
+제휴 대시보드 로컬 서버 → http://127.0.0.1:8788/
+  「지금 갱신」 버튼과 스킬 버튼은 이 주소로 열었을 때만 동작합니다.
+  끄기: Ctrl+C
+[skill] 요청 nweekly · owner=me
+[skill] 세션 시작 nweekly · run=9d19b4322a35
+[skill] 요청 cledger · owner=me
+[skill] 세션 시작 cledger · run=6e3ac91e0abc
+[skill] 요청 kpi-weekly · owner=me
+[skill] 세션 시작 kpi-weekly · run=a10d3728801c
+[skill] 요청 apple-notion · owner=me
+[skill] 요청 disney-notion · owner=me
+[skill] 요청 dweekly · owner=me
+[skill] 세션 시작 dweekly · run=630ada82f44c
+[skill] 요청 kpi-weekly · owner=me
+[skill] 세션 시작 kpi-weekly · run=db8e29441fdc
+[skill] 요청 disney-notion · owner=me
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 64703)
+Traceback (most recent call last):
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/Users/gimgeon-u/ad_network_dashboard/aff_server.py", line 379, in __init__
+    super().__init__(*a, directory=HERE, **kw)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 660, in __init__
+    super().__init__(*args, **kwargs)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 747, in __init__
+    self.handle()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 434, in handle
+    self.handle_one_request()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 422, in handle_one_request
+    method()
+  File "/Users/gimgeon-u/ad_network_dashboard/aff_server.py", line 451, in do_GET
+    return super().do_GET()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 667, in do_GET
+    self.copyfile(f, self.wfile)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 867, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/shutil.py", line 208, in copyfileobj
+    fdst_write(buf)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 826, in write
+    self._sock.sendall(b)
+BrokenPipeError: [Errno 32] Broken pipe
+----------------------------------------
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 60688)
+Traceback (most recent call last):
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/Users/gimgeon-u/ad_network_dashboard/aff_server.py", line 379, in __init__
+    super().__init__(*a, directory=HERE, **kw)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 660, in __init__
+    super().__init__(*args, **kwargs)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 747, in __init__
+    self.handle()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 434, in handle
+    self.handle_one_request()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 422, in handle_one_request
+    method()
+  File "/Users/gimgeon-u/ad_network_dashboard/aff_server.py", line 451, in do_GET
+    return super().do_GET()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 667, in do_GET
+    self.copyfile(f, self.wfile)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 867, in copyfile
+    shutil.copyfileobj(source, outputfile)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/shutil.py", line 208, in copyfileobj
+    fdst_write(buf)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 826, in write
+    self._sock.sendall(b)
+BrokenPipeError: [Errno 32] Broken pipe
+----------------------------------------
+[skill] 요청 dweekly · owner=me
+[skill] 세션 시작 dweekly · run=3a88705e6801
+[skill] 요청 nweekly · owner=me
+[skill] 세션 시작 nweekly · run=65232089793b
+[skill] 요청 nweekly · owner=me
+[skill] 세션 시작 nweekly · run=4219366055de
+[skill] 요청 apple-notion · owner=me
+[skill] 세션 시작 apple-notion · run=cc085422810d
+  지난 세션 40건 복원 — 「최근 작업」에서 열어 이어서 대화할 수 있습니다
+제휴 대시보드 로컬 서버 → http://127.0.0.1:8788/
+  「지금 갱신」 버튼과 스킬 버튼은 이 주소로 열었을 때만 동작합니다.
+  끄기: Ctrl+C
+[skill] 요청 cledger · owner=me
+[skill] 세션 시작 cledger · run=8f9f3ef4285c
+[skill] 요청 kpi-weekly · owner=me
+[skill] 요청 nweekly · owner=me
+[skill] 세션 시작 nweekly · run=5866bd7d4e7c
+[skill] 요청 apple-notion · owner=me
+[skill] 세션 시작 apple-notion · run=e3d0c39d2100
+[skill] 요청 disney-notion · owner=me
+[skill] 세션 시작 disney-notion · run=9d0e5946ed89
+[skill] 요청 nweekly · owner=me
+[skill] 세션 시작 nweekly · run=20a31068496f

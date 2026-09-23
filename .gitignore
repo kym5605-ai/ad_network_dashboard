@@ -84,6 +84,8 @@ impact_daily*.csv
 __pycache__/
 aff_server.py
 aff_sync.sh
+pv_sync.sh
+.pv_refresh_stats.json
 
 # 팀원 배포용 꾸러미 (스킬 md 사본 — 공유 폴더로 복사해 씀)
 team_setup/
@@ -131,3 +133,16 @@ weekly_sep_decline.html
 pv_loc_build.py
 inject_pv.py
 NEXT.md
+
+# 벤더 보강 결과 메모(자동 생성)
+.overlay_notes
+vendor_overlay.py
+aff_contrib_proto.html
+aff_tab_mockup.html
+
+# 운영 이벤트 기록 주입기 (events.csv 는 *.csv 로 이미 제외)
+inject_events.py
+index.plain.html.bak_*
+aff_dashboard_proto.html
+affnet.json
+inject_affnet.py
